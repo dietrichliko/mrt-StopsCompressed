@@ -1,0 +1,1312 @@
+---
+name: DoubleLep_nanoNtuple_v8
+period: Run2016preVFP
+samples:
+- name: DoubleMuon
+  type: Data
+  title: 'Double #mu'
+  attributes:
+    integrated_luminosity: 13.29
+    trigger:
+    - HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ
+    - HLT_Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_DZ
+  samples:
+  - name: DoubleMuon_Run2016B_ver2_HIPM_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/DoubleMuon_Run2016B_ver2_HIPM_UL
+  - name: DoubleMuon_Run2016C_HIPM_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/DoubleMuon_Run2016C_HIPM_UL
+  - name: DoubleMuon_Run2016D_HIPM_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/DoubleMuon_Run2016D_HIPM_UL
+  - name: DoubleMuon_Run2016E_HIPM_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/DoubleMuon_Run2016E_HIPM_UL
+  - name: DoubleMuon_Run2016F_HIPM_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/DoubleMuon_Run2016F_HIPM_UL
+- name: DoubleEG
+  type: Data
+  title: Double e
+  attributes:
+    integrated_luminosity: 13.29
+    trigger:
+    - HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ
+  samples:
+  - name: DoubleEG_Run2016B_ver2_HIPM_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/DoubleEG_Run2016B_ver2_HIPM_UL
+  - name: DoubleEG_Run2016C_HIPM_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/DoubleEG_Run2016C_HIPM_UL
+  - name: DoubleEG_Run2016D_HIPM_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/DoubleEG_Run2016D_HIPM_UL
+  - name: DoubleEG_Run2016E_HIPM_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/DoubleEG_Run2016E_HIPM_UL
+  - name: DoubleEG_Run2016F_HIPM_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/DoubleEG_Run2016F_HIPM_UL
+- name: SingleMuon
+  type: Data
+  title: 'Single #mu'
+  samples:
+  - name: SingleMuon_Run2016B_ver2_HIPM_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/SingleMuon_Run2016B_ver2_HIPM_UL
+  - name: SingleMuon_Run2016C_HIPM_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/SingleMuon_Run2016C_HIPM_UL
+  - name: SingleMuon_Run2016D_HIPM_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/SingleMuon_Run2016D_HIPM_UL
+  - name: SingleMuon_Run2016E_HIPM_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/SingleMuon_Run2016E_HIPM_UL
+  - name: SingleMuon_Run2016F_HIPM_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/SingleMuon_Run2016F_HIPM_UL
+- name: SingleElectron
+  type: Data
+  title: Single e
+  samples:
+  - name: SingleElectron_Run2016B_ver2_HIPM_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/SingleElectron_Run2016B_ver2_HIPM_UL
+  - name: SingleElectron_Run2016C_HIPM_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/SingleElectron_Run2016C_HIPM_UL
+  - name: SingleElectron_Run2016D_HIPM_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/SingleElectron_Run2016D_HIPM_UL
+  - name: SingleElectron_Run2016E_HIPM_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/SingleElectron_Run2016E_HIPM_UL
+  - name: SingleElectron_Run2016F_HIPM_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/SingleElectron_Run2016F_HIPM_UL
+- name: WJets
+  type: Background
+  title: W + Jets
+  attributes:
+    color: '8'
+  samples:
+  - name: WJetsToLNu_HT100to200
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/WJetsToLNu_HT100to200
+  - name: WJetsToLNu_HT200to400
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/WJetsToLNu_HT200to400
+  - name: WJetsToLNu_HT400to600
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/WJetsToLNu_HT400to600
+  - name: WJetsToLNu_HT600to800
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/WJetsToLNu_HT600to800
+  - name: WJetsToLNu_HT800to1200
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/WJetsToLNu_HT800to1200
+  - name: WJetsToLNu_HT1200to2500
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/WJetsToLNu_HT1200to2500
+  - name: WJetsToLNu_HT2500toInf
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/WJetsToLNu_HT2500toInf
+- name: DYJets
+  type: Background
+  title: Z/#gamma_{*} + Jets
+  attributes:
+    color: kMagenta-6
+  samples:
+  - name: DYJets_M50
+    type: Background
+    samples:
+    - name: DYJetsToLL_M50_HT70to100
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/DYJetsToLL_M50_HT70to100
+    - name: DYJetsToLL_M50_HT100to200
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/DYJetsToLL_M50_HT100to200
+    - name: DYJetsToLL_M50_HT200to400
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/DYJetsToLL_M50_HT200to400
+    - name: DYJetsToLL_M50_HT400to600
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/DYJetsToLL_M50_HT400to600
+    - name: DYJetsToLL_M50_HT600to800
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/DYJetsToLL_M50_HT600to800
+    - name: DYJetsToLL_M50_HT800to1200
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/DYJetsToLL_M50_HT800to1200
+    - name: DYJetsToLL_M50_HT1200to2500
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/DYJetsToLL_M50_HT1200to2500
+    - name: DYJetsToLL_M50_HT2500toInf
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/DYJetsToLL_M50_HT2500toInf
+  - name: DYJets_M4to50
+    type: Background
+    samples:
+    - name: DYJetsToLL_M4to50_HT200to400
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/DYJetsToLL_M4to50_HT200to400
+    - name: DYJetsToLL_M4to50_HT600toInf
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/DYJetsToLL_M4to50_HT600toInf
+- name: DYINV
+  type: Background
+  title: 'Z/#gamma_{*} #rightarrow #nu#bar{#nu} + Jets'
+  attributes:
+    color: kOrange-3
+  samples:
+  - name: DYJetsToNuNu_HT100to200
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/DYJetsToNuNu_HT100to200
+  - name: DYJetsToNuNu_HT200to400
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/DYJetsToNuNu_HT200to400
+  - name: DYJetsToNuNu_HT400to600
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/DYJetsToNuNu_HT400to600
+  - name: DYJetsToNuNu_HT600to800
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/DYJetsToNuNu_HT600to800
+  - name: DYJetsToNuNu_HT800to1200
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/DYJetsToNuNu_HT800to1200
+  - name: DYJetsToNuNu_HT1200to2500
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/DYJetsToNuNu_HT1200to2500
+  - name: DYJetsToNuNu_HT2500toInf
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/DYJetsToNuNu_HT2500toInf
+- name: TT
+  type: Background
+  title: t#bar{t}
+  attributes:
+    color: kAzure+1
+  samples:
+  - name: TTLep_pow_CP5
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/TTLep_pow_CP5
+  - name: TTSingleLep_pow_CP5
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/TTSingleLep_pow_CP5
+- name: T
+  type: Background
+  title: Single t
+  attributes:
+    color: kAzure+1
+  samples:
+  - name: T_tch_pow
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/T_tch_pow
+  - name: TBar_tch_pow
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/TBar_tch_pow
+  - name: T_tWch_ext
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/T_tWch_ext
+  - name: TBar_tWch_ext
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/TBar_tWch_ext
+- name: TTX
+  type: Background
+  title: 't#bar{t} #rightarrow X'
+  attributes:
+    color: kAzure-7
+  samples:
+  - name: TTWToLNu_CP5
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/TTWToLNu_CP5
+  - name: TTWToQQ
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/TTWToQQ
+  - name: TTGJets
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/TTGJets
+  - name: TTW_LO
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/TTW_LO
+  - name: TTZ_LO
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/TTZ_LO
+- name: VV
+  type: Background
+  title: MultiBoson
+  samples:
+  - name: WW
+    type: Background
+    samples:
+    - name: WWTo2L2Nu
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/WWTo2L2Nu
+    - name: WWTo1L1Nu2Q
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/WWTo1L1Nu2Q
+  - name: ZZ
+    type: Background
+    samples:
+    - name: ZZTo2L2Nu
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/ZZTo2L2Nu
+    - name: ZZTo2Q2L
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/ZZTo2Q2L
+    - name: ZZTo2Nu2Q
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/ZZTo2Nu2Q
+    - name: ZZTo4L
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/ZZTo4L
+  - name: WZ
+    type: Background
+    samples:
+    - name: WZTo3LNu_amcatnlo
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/WZTo3LNu_amcatnlo
+    - name: WZTo1L3Nu
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/WZTo1L3Nu
+    - name: WZTo1L1Nu2Q
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/WZTo1L1Nu2Q
+    - name: WZTo2Q2L
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/WZTo2Q2L
+- name: QCD
+  type: Background
+  title: QCD
+  attributes:
+    color: kMagenta+3
+  samples:
+  - name: QCD_HT50to100
+    type: Background
+    samples:
+    - name: QCD_HT50to100
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/QCD_HT50to100
+    - name: QCD_HT50to100_madgraph
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/QCD_HT50to100_madgraph
+  - name: QCD_HT100to200
+    type: Background
+    samples:
+    - name: QCD_HT100to200
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/QCD_HT100to200
+    - name: QCD_HT100to200_madgraph
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/QCD_HT100to200_madgraph
+  - name: QCD_HT200to300
+    type: Background
+    samples:
+    - name: QCD_HT200to300_madgraph
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/QCD_HT200to300_madgraph
+  - name: QCD_HT300to500
+    type: Background
+    samples:
+    - name: QCD_HT300to500
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/QCD_HT300to500
+    - name: QCD_HT300to500_madgraph
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/QCD_HT300to500_madgraph
+  - name: QCD_HT500to700
+    type: Background
+    samples:
+    - name: QCD_HT500to700
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/QCD_HT500to700
+    - name: QCD_HT500to700_madgraph
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/QCD_HT500to700_madgraph
+  - name: QCD_HT700to1000
+    type: Background
+    samples:
+    - name: QCD_HT700to1000
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/QCD_HT700to1000
+    - name: QCD_HT700to1000_madgraph
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/QCD_HT700to1000_madgraph
+  - name: QCD_HT1000to1500
+    type: Background
+    samples:
+    - name: QCD_HT1000to1500
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/QCD_HT1000to1500
+    - name: QCD_HT1000to1500_madgraph
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/QCD_HT1000to1500_madgraph
+  - name: QCD_HT1500to2000
+    type: Background
+    samples:
+    - name: QCD_HT1500to2000
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/QCD_HT1500to2000
+    - name: QCD_HT1500to2000_madgraph
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/QCD_HT1500to2000_madgraph
+  - name: QCD_HT2000toInf
+    type: Background
+    samples:
+    - name: QCD_HT2000toInf
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/QCD_HT2000toInf
+    - name: QCD_HT2000toInf_madgraph
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/QCD_HT2000toInf_madgraph
+- name: SMS_T2tt_mStop_500_mLSP_420
+  type: Signal
+  title: m_{#tilde{t}}=500, m_{#tilde{#chi}} = 420
+  directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/SMS_T2tt_mStop_500_mLSP_420
+- name: SMS_T2tt_mStop_500_mLSP_450
+  type: Signal
+  title: m_{#tilde{t}}=500, m_{#tilde{#chi}} = 420
+  directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/SMS_T2tt_mStop_500_mLSP_450
+- name: SMS_T2tt_mStop_500_mLSP_470
+  type: Signal
+  title: m_{#tilde{t}}=500, m_{#tilde{#chi}} = 420
+  directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16APVv9_nano_v8/DoubleLep/SMS_T2tt_mStop_500_mLSP_470
+---
+name: DoubleLep_nanoNtuple_v8
+period: Run2016postVFP
+samples:
+- name: DoubleMuon
+  type: Data
+  title: 'Double #mu'
+  attributes:
+    integrated_luminosity: 22.63
+    trigger:
+    - HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ
+    - HLT_Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_DZ
+  samples:
+  - name: DoubleMuon_Run2016F_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/DoubleMuon_Run2016F_UL
+  - name: DoubleMuon_Run2016G_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/DoubleMuon_Run2016G_UL
+  - name: DoubleMuon_Run2016H_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/DoubleMuon_Run2016H_UL
+- name: DoubleEG
+  type: Data
+  title: Double e
+  attributes:
+    integrated_luminosity: 22.63
+    trigger:
+    - HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ
+  samples:
+  - name: DoubleEG_Run2016F_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/DoubleEG_Run2016F_UL
+  - name: DoubleEG_Run2016G_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/DoubleEG_Run2016G_UL
+  - name: DoubleEG_Run2016H_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/DoubleEG_Run2016H_UL
+- name: SingleMuon
+  type: Data
+  title: 'Single #mu'
+  samples:
+  - name: SingleMuon_Run2016F_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/SingleMuon_Run2016F_UL
+  - name: SingleMuon_Run2016G_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/SingleMuon_Run2016G_UL
+  - name: SingleMuon_Run2016H_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/SingleMuon_Run2016H_UL
+- name: SingleElectron
+  type: Data
+  title: Single e
+  samples:
+  - name: SingleElectron_Run2016F_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/SingleElectron_Run2016F_UL
+  - name: SingleElectron_Run2016G_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/SingleElectron_Run2016G_UL
+  - name: SingleElectron_Run2016H_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/SingleElectron_Run2016H_UL
+- name: WJets
+  type: Background
+  title: W + Jets
+  attributes:
+    color: '8'
+  samples:
+  - name: WJetsToLNu_HT70to100
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/WJetsToLNu_HT70to100
+  - name: WJetsToLNu_HT100to200
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/WJetsToLNu_HT100to200
+  - name: WJetsToLNu_HT200to400
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/WJetsToLNu_HT200to400
+  - name: WJetsToLNu_HT400to600
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/WJetsToLNu_HT400to600
+  - name: WJetsToLNu_HT600to800
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/WJetsToLNu_HT600to800
+  - name: WJetsToLNu_HT800to1200
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/WJetsToLNu_HT800to1200
+  - name: WJetsToLNu_HT1200to2500
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/WJetsToLNu_HT1200to2500
+  - name: WJetsToLNu_HT2500toInf
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/WJetsToLNu_HT2500toInf
+- name: DYJets
+  type: Background
+  title: Z/#gamma_{*} + Jets
+  attributes:
+    color: kMagenta-6
+  samples:
+  - name: DYJets_M50
+    type: Background
+    samples:
+    - name: DYJetsToLL_M50_HT70to100
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/DYJetsToLL_M50_HT70to100
+    - name: DYJetsToLL_M50_HT100to200
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/DYJetsToLL_M50_HT100to200
+    - name: DYJetsToLL_M50_HT200to400
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/DYJetsToLL_M50_HT200to400
+    - name: DYJetsToLL_M50_HT400to600
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/DYJetsToLL_M50_HT400to600
+    - name: DYJetsToLL_M50_HT600to800
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/DYJetsToLL_M50_HT600to800
+    - name: DYJetsToLL_M50_HT800to1200
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/DYJetsToLL_M50_HT800to1200
+    - name: DYJetsToLL_M50_HT1200to2500
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/DYJetsToLL_M50_HT1200to2500
+    - name: DYJetsToLL_M50_HT2500toInf
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/DYJetsToLL_M50_HT2500toInf
+  - name: DYJets_M4to50
+    type: Background
+    samples:
+    - name: DYJetsToLL_M4to50_HT400to600
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/DYJetsToLL_M4to50_HT400to600
+    - name: DYJetsToLL_M4to50_HT600toInf
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/DYJetsToLL_M4to50_HT600toInf
+- name: DYINV
+  type: Background
+  title: 'Z/#gamma_{*} #rightarrow #nu#bar{#nu} + Jets'
+  attributes:
+    color: kOrange-3
+  samples:
+  - name: DYJetsToNuNu_HT100to200
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/DYJetsToNuNu_HT100to200
+  - name: DYJetsToNuNu_HT200to400
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/DYJetsToNuNu_HT200to400
+  - name: DYJetsToNuNu_HT400to600
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/DYJetsToNuNu_HT400to600
+  - name: DYJetsToNuNu_HT600to800
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/DYJetsToNuNu_HT600to800
+  - name: DYJetsToNuNu_HT800to1200
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/DYJetsToNuNu_HT800to1200
+  - name: DYJetsToNuNu_HT1200to2500
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/DYJetsToNuNu_HT1200to2500
+  - name: DYJetsToNuNu_HT2500toInf
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/DYJetsToNuNu_HT2500toInf
+- name: TT
+  type: Background
+  title: t#bar{t}
+  attributes:
+    color: kAzure+1
+  samples:
+  - name: TTLep_pow_CP5
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/TTLep_pow_CP5
+  - name: TTSingleLep_pow_CP5
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/TTSingleLep_pow_CP5
+- name: T
+  type: Background
+  title: Single t
+  attributes:
+    color: kAzure+1
+  samples:
+  - name: T_tch_pow
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/T_tch_pow
+  - name: TBar_tch_pow
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/TBar_tch_pow
+  - name: T_tWch_ext
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/T_tWch_ext
+  - name: TBar_tWch_ext
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/TBar_tWch_ext
+- name: TTX
+  type: Background
+  title: 't#bar{t} #rightarrow X'
+  attributes:
+    color: kAzure-7
+  samples:
+  - name: TTWToLNu_CP5
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/TTWToLNu_CP5
+  - name: TTWToQQ
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/TTWToQQ
+  - name: TTGJets
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/TTGJets
+  - name: TTW_LO
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/TTW_LO
+  - name: TTZ_LO
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/TTZ_LO
+- name: VV
+  type: Background
+  title: MultiBoson
+  samples:
+  - name: WW
+    type: Background
+    samples:
+    - name: WWTo2L2Nu
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/WWTo2L2Nu
+    - name: WWTo1L1Nu2Q
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/WWTo1L1Nu2Q
+  - name: ZZ
+    type: Background
+    samples:
+    - name: ZZTo2L2Nu
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/ZZTo2L2Nu
+    - name: ZZTo2Q2L
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/ZZTo2Q2L
+    - name: ZZTo2Nu2Q
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/ZZTo2Nu2Q
+    - name: ZZTo4L
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/ZZTo4L
+  - name: WZ
+    type: Background
+    samples:
+    - name: WZTo3LNu_amcatnlo
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/WZTo3LNu_amcatnlo
+    - name: WZTo1L3Nu
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/WZTo1L3Nu
+    - name: WZTo1L1Nu2Q
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/WZTo1L1Nu2Q
+    - name: WZTo2Q2L
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/WZTo2Q2L
+- name: QCD
+  type: Background
+  title: QCD
+  attributes:
+    color: kMagenta+3
+  samples:
+  - name: QCD_HT50to100
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/QCD_HT50to100
+  - name: QCD_HT100to200
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/QCD_HT100to200
+  - name: QCD_HT100to200_madgraph
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/QCD_HT100to200_madgraph
+  - name: QCD_HT200to300
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/QCD_HT200to300
+  - name: QCD_HT200to300_madgraph
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/QCD_HT200to300_madgraph
+  - name: QCD_HT300to500_madgraph
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/QCD_HT300to500_madgraph
+  - name: QCD_HT500to700_madgraph
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/QCD_HT500to700_madgraph
+  - name: QCD_HT700to1000_madgraph
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/QCD_HT700to1000_madgraph
+  - name: QCD_HT1000to1500
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/QCD_HT1000to1500
+  - name: QCD_HT1000to1500_madgraph
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/QCD_HT1000to1500_madgraph
+  - name: QCD_HT1500to2000
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/QCD_HT1500to2000
+  - name: QCD_HT1500to2000_madgraph
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/QCD_HT1500to2000_madgraph
+  - name: QCD_HT2000toInf
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/QCD_HT2000toInf
+  - name: QCD_HT2000toInf_madgraph
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/QCD_HT2000toInf_madgraph
+- name: SMS_T2tt_mStop_500_mLSP_420
+  type: Signal
+  title: m_{#tilde{t}}=500, m_{#tilde{#chi}}=420
+  directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/SMS_T2tt_mStop_500_mLSP_420
+- name: SMS_T2tt_mStop_500_mLSP_450
+  type: Signal
+  title: m_{#tilde{t}}=500, m_{#tilde{#chi}}=420
+  directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/SMS_T2tt_mStop_500_mLSP_450
+- name: SMS_T2tt_mStop_500_mLSP_470
+  type: Signal
+  title: m_{#tilde{t}}=500, m_{#tilde{#chi}}=470
+  directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/SMS_T2tt_mStop_500_mLSP_470
+- name: SMS_T2tt_LL_mStop_400_mLSP_380
+  type: Signal
+  title: m_{#tilde{t}}=400, m_{#tilde{#chi}}=380
+  directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/SMS_T2tt_LL_mStop_400_mLSP_380
+- name: SMS_T2tt_LL_mStop_350_mLSP_335
+  type: Signal
+  title: m_{#tilde{t}}=350, m_{#tilde{#chi}}=335
+  directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/SMS_T2tt_LL_mStop_350_mLSP_335
+- name: SMS_T2tt_LL_mStop_300_mLSP_290
+  type: Signal
+  title: m_{#tilde{t}}=300, m_{#tilde{#chi}}=290
+  directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL16v9_nano_v8/DoubleLep/SMS_T2tt_LL_mStop_300_mLSP_290
+---
+name: DoubleLep_nanoNtuple_v8
+period: Run2017
+samples:
+- name: DoubleMuon
+  type: Data
+  title: 'Double #mu'
+  attributes:
+    integrated_luminosity: 41.48
+    trigger:
+    - HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8
+    - HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass8
+  samples:
+  - name: DoubleMuon_Run2017B_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/DoubleMuon_Run2017B_UL
+  - name: DoubleMuon_Run2017C_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/DoubleMuon_Run2017C_UL
+  - name: DoubleMuon_Run2017D_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/DoubleMuon_Run2017D_UL
+  - name: DoubleMuon_Run2017E_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/DoubleMuon_Run2017E_UL
+  - name: DoubleMuon_Run2017F_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/DoubleMuon_Run2017F_UL
+- name: DoubleEG
+  type: Data
+  title: Double e
+  attributes:
+    integrated_luminosity: 41.48
+    trigger:
+    - HLT_DoubleEle33_CaloIdL_MW
+  samples:
+  - name: DoubleEG_Run2017B_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/DoubleEG_Run2017B_UL
+  - name: DoubleEG_Run2017C_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/DoubleEG_Run2017C_UL
+  - name: DoubleEG_Run2017D_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/DoubleEG_Run2017D_UL
+  - name: DoubleEG_Run2017E_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/DoubleEG_Run2017E_UL
+  - name: DoubleEG_Run2017F_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/DoubleEG_Run2017F_UL
+- name: SingleMuon
+  type: Data
+  title: 'Single #mu'
+  samples:
+  - name: SingleMuon_Run2017B_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/SingleMuon_Run2017B_UL
+  - name: SingleMuon_Run2017C_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/SingleMuon_Run2017C_UL
+  - name: SingleMuon_Run2017D_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/SingleMuon_Run2017D_UL
+  - name: SingleMuon_Run2017E_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/SingleMuon_Run2017E_UL
+  - name: SingleMuon_Run2017F_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/SingleMuon_Run2017F_UL
+- name: SingleElectron
+  type: Data
+  title: Single e
+  samples:
+  - name: SingleElectron_Run2017B_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/SingleElectron_Run2017B_UL
+  - name: SingleElectron_Run2017C_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/SingleElectron_Run2017C_UL
+  - name: SingleElectron_Run2017D_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/SingleElectron_Run2017D_UL
+  - name: SingleElectron_Run2017E_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/SingleElectron_Run2017E_UL
+  - name: SingleElectron_Run2017F_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/SingleElectron_Run2017F_UL
+- name: WJets
+  type: Background
+  title: W + Jets
+  attributes:
+    color: '8'
+  samples:
+  - name: WJetsToLNu_HT70to100
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/WJetsToLNu_HT70to100
+  - name: WJetsToLNu_HT100to200
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/WJetsToLNu_HT100to200
+  - name: WJetsToLNu_HT200to400
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/WJetsToLNu_HT200to400
+  - name: WJetsToLNu_HT400to600
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/WJetsToLNu_HT400to600
+  - name: WJetsToLNu_HT600to800
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/WJetsToLNu_HT600to800
+  - name: WJetsToLNu_HT800to1200
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/WJetsToLNu_HT800to1200
+  - name: WJetsToLNu_HT1200to2500
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/WJetsToLNu_HT1200to2500
+  - name: WJetsToLNu_HT2500toInf
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/WJetsToLNu_HT2500toInf
+- name: DYJets
+  type: Background
+  title: Z/#gamma_{*} + Jets
+  attributes:
+    color: kMagenta-6
+  samples:
+  - name: DYJets_M50
+    type: Background
+    samples:
+    - name: DYJetsToLL_M50_HT70to100
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/DYJetsToLL_M50_HT70to100
+    - name: DYJetsToLL_M50_HT100to200
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/DYJetsToLL_M50_HT100to200
+    - name: DYJetsToLL_M50_HT200to400
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/DYJetsToLL_M50_HT200to400
+    - name: DYJetsToLL_M50_HT400to600
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/DYJetsToLL_M50_HT400to600
+    - name: DYJetsToLL_M50_HT600to800
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/DYJetsToLL_M50_HT600to800
+    - name: DYJetsToLL_M50_HT800to1200
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/DYJetsToLL_M50_HT800to1200
+    - name: DYJetsToLL_M50_HT1200to2500
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/DYJetsToLL_M50_HT1200to2500
+    - name: DYJetsToLL_M50_HT2500toInf
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/DYJetsToLL_M50_HT2500toInf
+  - name: DYJets_M4to50
+    type: Background
+    samples:
+    - name: DYJetsToLL_M4to50_HT100to200
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/DYJetsToLL_M4to50_HT100to200
+- name: DYINV
+  type: Background
+  title: 'Z/#gamma_{*} #rightarrow #nu#bar{#nu} + Jets'
+  attributes:
+    color: kOrange-3
+  samples:
+  - name: DYJetsToNuNu_HT100to200
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/DYJetsToNuNu_HT100to200
+  - name: DYJetsToNuNu_HT200to400
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/DYJetsToNuNu_HT200to400
+  - name: DYJetsToNuNu_HT400to600
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/DYJetsToNuNu_HT400to600
+  - name: DYJetsToNuNu_HT600to800
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/DYJetsToNuNu_HT600to800
+  - name: DYJetsToNuNu_HT800to1200
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/DYJetsToNuNu_HT800to1200
+  - name: DYJetsToNuNu_HT1200to2500
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/DYJetsToNuNu_HT1200to2500
+  - name: DYJetsToNuNu_HT2500toInf
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/DYJetsToNuNu_HT2500toInf
+- name: TT
+  type: Background
+  title: t#bar{t}
+  attributes:
+    color: kAzure+1
+  samples:
+  - name: TTLep_pow_CP5
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/TTLep_pow_CP5
+  - name: TTSingleLep_pow_CP5
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/TTSingleLep_pow_CP5
+- name: T
+  type: Background
+  title: Single t
+  attributes:
+    color: kAzure+1
+  samples:
+  - name: T_tch_pow
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/T_tch_pow
+  - name: TBar_tch_pow
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/TBar_tch_pow
+  - name: T_tWch_ext
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/T_tWch_ext
+  - name: TBar_tWch_ext
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/TBar_tWch_ext
+- name: TTX
+  type: Background
+  title: 't#bar{t} #rightarrow X'
+  attributes:
+    color: kAzure-7
+  samples:
+  - name: TTWToLNu_CP5
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/TTWToLNu_CP5
+  - name: TTWToQQ
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/TTWToQQ
+  - name: TTW_LO
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/TTW_LO
+  - name: TTZ_LO
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/TTZ_LO
+  - name: TTGJets
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/TTGJets
+- name: VV
+  type: Background
+  title: MultiBoson
+  samples:
+  - name: WW
+    type: Background
+    samples:
+    - name: WWTo2L2Nu
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/WWTo2L2Nu
+    - name: WWTo1L1Nu2Q
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/WWTo1L1Nu2Q
+  - name: ZZ
+    type: Background
+    samples:
+    - name: ZZTo2L2Nu
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/ZZTo2L2Nu
+    - name: ZZTo2Q2L
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/ZZTo2Q2L
+    - name: ZZTo2Nu2Q
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/ZZTo2Nu2Q
+    - name: ZZTo4L
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/ZZTo4L
+  - name: WZ
+    type: Background
+    samples:
+    - name: WZTo3LNu_amcatnlo
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/WZTo3LNu_amcatnlo
+    - name: WZTo1L3Nu
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/WZTo1L3Nu
+    - name: WZTo1L1Nu2Q
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/WZTo1L1Nu2Q
+    - name: WZTo2Q2L
+      type: Background
+      directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/WZTo2Q2L
+- name: QCD
+  type: Background
+  title: QCD
+  attributes:
+    color: kMagenta+3
+  samples:
+  - name: QCD_HT50to100
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/QCD_HT50to100
+  - name: QCD_HT100to200
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/QCD_HT100to200
+  - name: QCD_HT200to300
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/QCD_HT200to300
+  - name: QCD_HT300to500
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/QCD_HT300to500
+  - name: QCD_HT500to700
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/QCD_HT500to700
+  - name: QCD_HT700to1000
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/QCD_HT700to1000
+  - name: QCD_HT1000to1500
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/QCD_HT1000to1500
+  - name: QCD_HT1500to2000
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/QCD_HT1500to2000
+  - name: QCD_HT2000toInf
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/QCD_HT2000toInf
+- name: SMS_T2tt_mStop_500_mLSP_420
+  type: Signal
+  title: m_{#tilde{t}}=500, m_{#tilde{#chi}}=420
+  directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/SMS_T2tt_mStop_500_mLSP_420
+- name: SMS_T2tt_mStop_500_mLSP_450
+  type: Signal
+  title: m_{#tilde{t}}=500, m_{#tilde{#chi}}=450
+  directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/SMS_T2tt_mStop_500_mLSP_450
+- name: SMS_T2tt_mStop_500_mLSP_470
+  type: Signal
+  title: m_{#tilde{t}}=500, m_{#tilde{#chi}}=470
+  directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/SMS_T2tt_mStop_500_mLSP_470
+- name: SMS_T2tt_LL_mStop_400_mLSP_380
+  type: Signal
+  title: m_{#tilde{t}}=400, m_{#tilde{#chi}}=380
+  directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/SMS_T2tt_LL_mStop_400_mLSP_380
+- name: SMS_T2tt_LL_mStop_350_mLSP_335
+  type: Signal
+  title: m_{#tilde{t}}=350, m_{#tilde{#chi}}=335
+  directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/SMS_T2tt_LL_mStop_350_mLSP_335
+- name: SMS_T2tt_LL_mStop_300_mLSP_290
+  type: Signal
+  title: m_{#tilde{t}}=300, m_{#tilde{#chi}}=290
+  directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL17v9_nano_v8/DoubleLep/SMS_T2tt_LL_mStop_300_mLSP_290
+---
+name: DoubleLep_nanoNtuple_v8
+period: Run2018
+samples:
+- name: DoubleMuon
+  type: Data
+  title: 'Double #mu'
+  attributes:
+    integrated_luminosity: 59.83
+    trigger:
+    - HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8
+  samples:
+  - name: DoubleMuon_Run2018A_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/DoubleMuon_Run2018A_UL
+  - name: DoubleMuon_Run2018B_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/DoubleMuon_Run2018B_UL
+  - name: DoubleMuon_Run2018C_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/DoubleMuon_Run2018C_UL
+  - name: DoubleMuon_Run2018D_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/DoubleMuon_Run2018D_UL
+- name: SingleMuon
+  type: Data
+  title: 'Single #mu'
+  samples:
+  - name: SingleMuon_Run2018A_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/SingleMuon_Run2018A_UL
+  - name: SingleMuon_Run2018B_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/SingleMuon_Run2018B_UL
+  - name: SingleMuon_Run2018C_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/SingleMuon_Run2018C_UL
+  - name: SingleMuon_Run2018D_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/SingleMuon_Run2018D_UL
+- name: SingleElectron
+  type: Data
+  title: Single e
+  attributes:
+    integrated_luminosity: 59.83
+    trigger:
+    - HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL
+  samples:
+  - name: SingleElectron_Run2018A_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/SingleElectron_Run2018A_UL
+  - name: SingleElectron_Run2018B_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/SingleElectron_Run2018B_UL
+  - name: SingleElectron_Run2018C_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/SingleElectron_Run2018C_UL
+  - name: SingleElectron_Run2018D_UL
+    type: Data
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/SingleElectron_Run2018D_UL
+- name: WJets
+  type: Background
+  title: W + Jets
+  attributes:
+    color: '8'
+  samples:
+  - name: WJetsToLNu_HT70to100
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/WJetsToLNu_HT70to100
+  - name: WJetsToLNu_HT100to200
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/WJetsToLNu_HT100to200
+  - name: WJetsToLNu_HT200to400
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/WJetsToLNu_HT200to400
+  - name: WJetsToLNu_HT400to600
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/WJetsToLNu_HT400to600
+  - name: WJetsToLNu_HT600to800
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/WJetsToLNu_HT600to800
+  - name: WJetsToLNu_HT800to1200
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/WJetsToLNu_HT800to1200
+  - name: WJetsToLNu_HT1200to2500
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/WJetsToLNu_HT1200to2500
+  - name: WJetsToLNu_HT2500toInf
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/WJetsToLNu_HT2500toInf
+- name: DYJets
+  type: Background
+  title: Z/#gamma_{*} + Jets
+  attributes:
+    color: kMagenta-6
+  samples:
+  - name: DYJetsToLL_M50_HT70to100
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/DYJetsToLL_M50_HT70to100
+  - name: DYJetsToLL_M50_HT100to200
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/DYJetsToLL_M50_HT100to200
+  - name: DYJetsToLL_M50_HT200to400
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/DYJetsToLL_M50_HT200to400
+  - name: DYJetsToLL_M50_HT400to600
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/DYJetsToLL_M50_HT400to600
+  - name: DYJetsToLL_M50_HT600to800
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/DYJetsToLL_M50_HT600to800
+  - name: DYJetsToLL_M50_HT800to1200
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/DYJetsToLL_M50_HT800to1200
+  - name: DYJetsToLL_M50_HT1200to2500
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/DYJetsToLL_M50_HT1200to2500
+  - name: DYJetsToLL_M50_HT2500toInf
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/DYJetsToLL_M50_HT2500toInf
+- name: DYINV
+  type: Background
+  title: 'Z/#gamma_{*} #rightarrow #nu#bar{#nu} + Jets'
+  attributes:
+    color: kOrange-3
+  samples:
+  - name: DYJetsToNuNu_HT100to200
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/DYJetsToNuNu_HT100to200
+  - name: DYJetsToNuNu_HT200to400
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/DYJetsToNuNu_HT200to400
+  - name: DYJetsToNuNu_HT400to600
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/DYJetsToNuNu_HT400to600
+  - name: DYJetsToNuNu_HT600to800
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/DYJetsToNuNu_HT600to800
+  - name: DYJetsToNuNu_HT800to1200
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/DYJetsToNuNu_HT800to1200
+  - name: DYJetsToNuNu_HT1200to2500
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/DYJetsToNuNu_HT1200to2500
+  - name: DYJetsToNuNu_HT2500toInf
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/DYJetsToNuNu_HT2500toInf
+- name: TT
+  type: Background
+  title: t#bar{t}
+  attributes:
+    color: kAzure+1
+  samples:
+  - name: TTLep_pow_CP5
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/TTLep_pow_CP5
+  - name: TTSingleLep_pow_CP5
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/TTSingleLep_pow_CP5
+- name: T
+  type: Background
+  title: Single t
+  attributes:
+    color: kAzure+1
+  samples:
+  - name: T_tch_pow
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/T_tch_pow
+  - name: TBar_tch_pow
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/TBar_tch_pow
+  - name: T_tWch_ext
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/T_tWch_ext
+  - name: TBar_tWch_ext
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/TBar_tWch_ext
+- name: TTX
+  type: Background
+  title: 't#bar{t} #rightarrow X'
+  attributes:
+    color: kAzure-7
+  samples:
+  - name: TTWToQQ
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/TTWToQQ
+  - name: TTW_LO
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/TTW_LO
+  - name: TTZ_LO
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/TTZ_LO
+  - name: TTGJets
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/TTGJets
+- name: VV
+  type: Background
+  title: MultiBoson
+  samples:
+  - name: WWTo2L2Nu
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/WWTo2L2Nu
+  - name: WWTo1L1Nu2Q
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/WWTo1L1Nu2Q
+  - name: ZZTo2L2Nu
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/ZZTo2L2Nu
+  - name: ZZTo2Q2L
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/ZZTo2Q2L
+  - name: ZZTo2Nu2Q
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/ZZTo2Nu2Q
+  - name: ZZTo4L
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/ZZTo4L
+  - name: WZTo2Q2L
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/WZTo2Q2L
+  - name: WZTo1L1Nu2Q
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/WZTo1L1Nu2Q
+  - name: WZTo3LNu_amcatnlo
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/WZTo3LNu_amcatnlo
+- name: QCD
+  type: Background
+  title: QCD
+  attributes:
+    color: kMagenta+3
+  samples:
+  - name: QCD_HT50to100
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/QCD_HT50to100
+  - name: QCD_HT100to200
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/QCD_HT100to200
+  - name: QCD_HT200to300
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/QCD_HT200to300
+  - name: QCD_HT300to500
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/QCD_HT300to500
+  - name: QCD_HT500to700
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/QCD_HT500to700
+  - name: QCD_HT700to1000
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/QCD_HT700to1000
+  - name: QCD_HT1000to1500
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/QCD_HT1000to1500
+  - name: QCD_HT1500to2000
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/QCD_HT1500to2000
+  - name: QCD_HT2000toInf
+    type: Background
+    directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/QCD_HT2000toInf
+- name: SMS_T2tt_mStop_500_mLSP_420
+  type: Signal
+  title: m_{#tilde{t}}=500, m_{#tilde{#chi}}=420
+  directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/SMS_T2tt_mStop_500_mLSP_420
+- name: SMS_T2tt_mStop_500_mLSP_450
+  type: Signal
+  title: m_{#tilde{t}}=500, m_{#tilde{#chi}}=450
+  directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/SMS_T2tt_mStop_500_mLSP_450
+- name: SMS_T2tt_mStop_500_mLSP_470
+  type: Signal
+  title: m_{#tilde{t}}=500, m_{#tilde{#chi}}=470
+  directory: /store/user/liko/StopsCompressed/nanoTuples/compstops_UL18v9_nano_v8/DoubleLep/SMS_T2tt_mStop_500_mLSP_470

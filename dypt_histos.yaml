@@ -1,0 +1,73 @@
+---
+- dataframe: muon
+  weight: the_weight
+  data_samples: DoubleMuon
+  Histo1D:
+    - name: GoodMuon_pt
+      title: "Good #mu p_{T}"
+      bins: [100, 0., 600.]
+    - name: GoodMuon_phi
+      title: "Good #mu #phi"
+      bins: [100, -3.14159, 3.14159]
+    - name: GoodMuon_eta
+      title: "Good #mu #eta"
+      bins: [100, -3, 3]
+    - name: GoodMuon_charge
+      title: "Good #mu charge"
+      bins: [100, -3, 3]
+    - name: muon_ll_mass
+      title: "Dilepton mass"
+      bins: [100,60.,120.]
+      var: ll_mass
+    - name: muon_ll_pt
+      title: "Dimuon p_{T}"
+      bins: [100,0.,1000.]
+      var: ll_pt
+    - name: muon_ll_pt_1
+      title: "Dimuon p_{T} (80 < m < 100)"
+      bins: [100,0.,1000.]
+      var: ll_pt
+      when: ll_mass > 80 && ll_mass < 100
+    - name: muon_ll_pt_2
+      title: "Dimuon p_{T} (80 < m < 100)"
+      varbins: [0., 50., 100., 150., 200., 300., 400., 600., 1200.]
+      var: ll_pt
+      when: ll_mass > 80 && ll_mass < 100
+
+- dataframe: elec
+  weight: the_weight
+  data_samples:
+    Run2018: SingleElectron
+    default: DoubleEG
+  Histo1D:  
+    - name: GoodElectron_pt
+      title: "Good #mu p_{T}"
+      bins: [100, 0., 600.]
+    - name: GoodElectron_phi
+      title: "Good #mu #phi"
+      bins: [100, -3.14159, 3.14159]
+    - name: GoodElectron_eta
+      title: "Good #mu #eta"
+      bins: [100, -3, 3]
+    - name: GoodElectron_charge
+      title: "Good #mu charge"
+      bins: [100, -3, 3]
+    - name: elec_ll_mass
+      title: "Dielectron mass"
+      bins: [100,60.,120.]
+      var: ll_mass
+    - name: elec_ll_pt
+      title: "Dielectron p_{T}"
+      bins: [100,0.,1000.]
+      var: ll_pt
+    - name: elec_ll_pt_1
+      title: "Dielectron p_{T} (80 < m < 100)"
+      bins: [100,0.,1000.]
+      var: ll_pt
+      when: ll_mass > 80 && ll_mass < 100
+    - name: elec_ll_pt_2
+      title: "Dielectron p_{T} (80 < m < 100)"
+      varbins: [0., 50., 100., 150., 200., 300., 400., 600., 1200.]
+      var: ll_pt
+      when: ll_mass > 80 && ll_mass < 100
+

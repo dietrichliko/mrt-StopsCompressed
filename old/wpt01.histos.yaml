@@ -1,0 +1,637 @@
+---
+- dataframe: df_mu0
+  weight: the_weight
+  data_samples: SingleMuon
+  Histo1D:
+    - name: MediumMuon_pt
+      title: "Medium #mu p_{T}"
+      bins: [100, 0., 600.]
+    - name: MediumMuon_phi
+      title: "Medium #mu #phi"
+      bins: [100, -3.14159, 3.14159]
+    - name: MediumMuon_eta
+      title: "Medium #mu #eta"
+      bins: [100, -3, 3]
+    - name: MediumMuon_pfRelIso03_all
+      title: "Medium #mu RelIso03"
+      bins: [100, 0., 0.5]
+      var: Muon_pfRelIso03_all[Muon_mediumId]
+    - name: MediumMuon_dxy
+      title: "Medium #mu #Delta_{xy}"
+      bins: [100, -0.5, 0.5]
+      var: Muon_dxy[Muon_mediumId]
+    - name: MediumMuon_dz
+      title: "Medium #mu #Delta_{z}"
+      bins: [100, -0.5, 0.5]
+      var: Muon_dz[Muon_mediumId]
+    - name: MediumMuon_sxy
+      title: "Medium #mu #sigma_{xy}"
+      bins: [100, -10., 10]
+      var: Muon_dxy[Muon_mediumId]/Muon_dxyErr[Muon_mediumId]
+    - name: MediumMuon_sz
+      title: "edium #mu #sigma_{z}"
+      bins: [100, -10., 10]
+      var: Muon_dz[Muon_mediumId]/Muon_dzErr[Muon_mediumId]
+    - name: FakeMediumMuon_pt
+      title: "Medium #mu p_{T}"
+      bins: [100, 0., 600.]
+      var: MediumMuon_pt[MediumMuon_genPartFlav == 0]
+
+    - name: TightMuon_pt
+      title: "Tight #mu p_{T}"
+      bins: [100, 0., 600.]
+    - name: TightMuon_phi
+      title: "Tight #mu #phi"
+      bins: [100, -3.14159, 3.14159]
+    - name: TightMuon_eta
+      title: "Tight #mu #eta"
+      bins: [100, -3, 3]
+    - name: TightMuon_pfRelIso03_all
+      title: "Tight #mu RelIso03"
+      bins: [100, 0., 0.5]
+      var: Muon_pfRelIso03_all[Muon_tightId]
+    - name: TightMuon_dxy
+      title: "Tight #mu #Delta_{xy}"
+      bins: [100, -0.5, 0.5]
+      var: Muon_dxy[Muon_tightId]
+    - name: TightMuon_dz
+      title: "Tight #mu #Delta_{z}"
+      bins: [100, -0.5, 0.5]
+      var: Muon_dz[Muon_tightId]
+    - name: TightMuon_sxy
+      title: "Tight #mu #sigma_{xy}"
+      bins: [100, -10., 10.]
+      var: Muon_dxy[Muon_tightId]/Muon_dxyErr[Muon_tightId]
+    - name: TightMuon_sz
+      title: "Tight #mu #sigma_{z}"
+      bins: [100, -10., 10.]
+      var: Muon_dz[Muon_tightId]/Muon_dzErr[Muon_tightId]
+    - name: FakeTightMuon_pt
+      title: "Tight #mu p_{T}"
+      bins: [100, 0., 600.]
+      var: TightMuon_pt[TightMuon_genPartFlav == 0]
+
+    - name: GoodMuon_pt
+      title: "Good #mu p_{T}"
+      bins: [100, 0., 600.]
+    - name: GoodMuon_phi
+      title: "Good #mu #phi"
+      bins: [100, -3.14159, 3.14159]
+    - name: GoodMuon_eta
+      title: "Good #mu #eta"
+      bins: [100, -3, 3]
+    - name: GoodMuon_pfRelIso03_all
+      title: "Good #mu RelIso03"
+      bins: [100, 0., 0.5]
+      var: Muon_pfRelIso03_all[GoodMuon]
+    - name: GoodMuon_dxy
+      title: "Good #mu #Delta_{xy}"
+      bins: [100, -0.5, 0.5]
+      var: Muon_dxy[GoodMuon]
+    - name: GoodMuon_dz
+      title: "Good #mu #Delta_{z}"
+      bins: [100, -0.5, 0.5]
+      var: Muon_dz[GoodMuon]
+    - name: GoodMuon_sxy
+      title: "Good #mu #sigma_{xy}"
+      bins: [100, -10., 10]
+      var: Muon_dxy[GoodMuon]/Muon_dxyErr[GoodMuon]
+    - name: GoodMuon_sz
+      title: "Good #mu #sigma_{z}"
+      bins: [100, -10., 10]
+      var: Muon_dz[GoodMuon]/Muon_dzErr[GoodMuon]
+    - name: FakeGoodMuon_pt
+      title: "Good #mu p_{T}"
+      bins: [100, 0., 600.]
+      var: GoodMuon_pt[GoodMuon_genPartFlav == 0]
+    - name: nGoodMuon
+      title: "Number of Good #mu"
+      bins: [ 10, -0.5, 9.5]
+      var: Sum(GoodMuon)
+    - name: nGoodMuon30
+      title: "Number of Good #mu > 30 GeV"
+      bins: [ 10, -0.5, 9.5]
+      var: Sum(GoodMuon_pt > 30.)
+    - name: nGoodMuon50
+      title: "Number of Good #mu > 50 GeV"
+      bins: [ 10, -0.5, 9.5]
+      var: Sum(GoodMuon_pt > 50.)
+
+    - name: Muon_ISRJets_pt
+      title: "ISR Jet p_{T}"
+      bins: [100, 0., 600.]
+      var: ISRJets_pt
+    - name: Muon_nISRJets
+      title: "ISR Jets"
+      bins: [100, 0., 20.]
+      var: nISRJets
+
+- dataframe: df_el0
+  weight: the_weight
+  data_samples: SingleElectron
+  Histo1D:
+    - name: MediumElectron_pt
+      title: "Medium e p_{T}"
+      bins: [100, 0., 600.]
+    - name: MediumElectron_phi
+      title: "Medium e #phi"
+      bins: [100, -3.14159, 3.14159]
+    - name: MediumElectron_eta
+      title: "Medium e #eta"
+      bins: [100, -3, 3]
+    - name: MediumElectron_pfRelIso03_all
+      title: "Medium e RelIso03"
+      bins: [100, 0., 0.5]
+      var: Electron_pfRelIso03_all[Electron_cutBased > 2]
+    - name: MediumElectron_dxy
+      title: "Medium #mu #Delta_{xy}"
+      bins: [100, -0.5, 0.5]
+      var: Electron_dxy[Electron_cutBased > 2]
+    - name: MediumElectron_dz
+      title: "Medium #mu #Delta_{z}"
+      bins: [100, -0.5, 0.5]
+      var: Electron_dz[Electron_cutBased > 2]
+    - name: MediumElectron_sxy
+      title: "Medium #mu #sigma_{xy}"
+      bins: [100, -10., 10]
+      var: Electron_dxy[Electron_cutBased > 2]/Electron_dxyErr[Electron_cutBased > 2]
+    - name: MediumElectron_sz
+      title: "edium #mu #sigma_{z}"
+      bins: [100, -10., 10]
+      var: Electron_dz[Electron_cutBased > 2]/Electron_dzErr[Electron_cutBased > 2]
+    - name: FakeMediumElectron_pt
+      title: "Medium e p_{T}"
+      bins: [100, 0., 600.]
+      var: MediumElectron_pt[MediumElectron_genPartFlav == 0]
+
+    - name: TightElectron_pt
+      title: "Tight e p_{T}"
+      bins: [100, 0., 600.]
+    - name: TightElectron_phi
+      title: "Tight e #phi"
+      bins: [100, -3.14159, 3.14159]
+    - name: TightElectron_eta
+      title: "Tight e #eta"
+      bins: [100, -3, 3]
+    - name: TightElectron_pfRelIso03_all
+      title: "Tight e RelIso03"
+      bins: [100, 0., 0.5]
+      var: Electron_pfRelIso03_all[Electron_cutBased > 3]
+    - name: TightElectron_dxy
+      title: "Tight #mu #Delta_{xy}"
+      bins: [100, -0.5, 0.5]
+      var: Electron_dxy[Electron_cutBased > 3]
+    - name: TightElectron_dz
+      title: "Tight #mu #Delta_{z}"
+      bins: [100, -0.5, 0.5]
+      var: Electron_dz[Electron_cutBased > 3]
+    - name: TightElectron_sxy
+      title: "Tight #mu #sigma_{xy}"
+      bins: [100, -10., 10]
+      var: Electron_dxy[Electron_cutBased > 3]/Electron_dxyErr[Electron_cutBased > 3]
+    - name: TightElectron_sz
+      title: "Tight #mu #sigma_{z}"
+      bins: [100, -10., 10.]
+      var: Electron_dz[Electron_cutBased > 3]/Electron_dzErr[Electron_cutBased > 3]
+    - name: FakeTightElectron_pt
+      title: "Tight e p_{T}"
+      bins: [100, 0., 600.]
+      var: TightElectron_pt[TightElectron_genPartFlav == 0]
+
+    - name: GoodElectron_pt
+      title: "Good e p_{T}"
+      bins: [100, 0., 600.]
+    - name: GoodElectron_phi
+      title: "Good e #phi"
+      bins: [100, -3.14159, 3.14159]
+    - name: GoodElectron_eta
+      title: "Good e #eta"
+      bins: [100, -3, 3]
+    - name: GoodElectron_pfRelIso03_all
+      title: "Good e RelIso03"
+      bins: [100, 0., 0.5]
+      var: Electron_pfRelIso03_all[GoodElectron]
+    - name: GoodElectron_dxy
+      title: "Good #mu #Delta_{xy}"
+      bins: [100, -0.5, 0.5]
+      var: Electron_dxy[GoodElectron]
+    - name: GoodElectron_dz
+      title: "Good #mu #Delta_{z}"
+      bins: [100, -0.5, 0.5]
+      var: Electron_dz[GoodElectron]
+    - name: GoodElectron_sxy
+      title: "Good #mu #sigma_{xy}"
+      bins: [100, -10., 10]
+      var: Electron_dxy[GoodElectron]/Electron_dxyErr[GoodElectron]
+    - name: GoodElectron_sz
+      title: "Good #mu #sigma_{z}"
+      bins: [100, -10., 10]
+      var: Electron_dz[GoodElectron]/Electron_dzErr[GoodElectron]
+    - name: FakeGoodElectron_pt
+      title: "Good e p_{T}"
+      bins: [100, 0., 600.]
+      var: GoodElectron_pt[GoodElectron_genPartFlav == 0]
+    - name: nGoodElectron
+      title: "Number of Good e"
+      bins: [ 10, -0.5, 9.5]
+      var: Sum(GoodElectron)
+    - name: nGoodElectron30
+      title: "Number of Good e > 30 GeV"
+      bins: [ 10, -0.5, 9.5]
+      var: Sum(GoodElectron_pt > 30.)
+    - name: nGoodElectron50
+      title: "Number of Good e > 50 GeV"
+      bins: [ 10, -0.5, 9.5]
+      var: Sum(GoodElectron_pt > 50.)
+
+    - name: Electron_ISRJets_pt
+      title: "ISR Jet p_{T}"
+      bins: [100, 0., 600.]
+      var: ISRJets_pt
+    - name: Electron_nISRJets
+      title: "ISR Jets"
+      bins: [100, 0., 20.]
+      var: nISRJets
+
+- dataframe: df_mu1
+  weight: the_weight
+  data_samples: SingleMuon
+  Histo1D:
+    - name: mu1_pt
+      title: "Leading #mu p_{T}"
+      bins: [50, 0., 600.]
+      var: ll_pt
+    - name: mu1_phi
+      title: "leading #mu #phi"
+      bins: [50, -3.14159, 3.14159]
+      var: ll_phi
+    - name: mu1_eta
+      title: "Leading #mu #eta"
+      bins: [50, -3, 3.]
+      var: ll_eta
+    - name: mu1_LT
+      title: "L_{T}"
+      bins: [50, 0., 600.]
+      var: LT
+    - name: mu1_HT
+      title: "H_{T}"
+      bins: [50, 0., 600.]
+      var: HT
+    - name: mu1_MET
+      title: "ME_{T}"
+      bins: [50, 0., 600.]
+      var: met_pt
+    - name: mu1_MET_phi
+      title: "ME_{T} #phi"
+      bins: [50, -3.14159, 3.14159]
+      var: met_phi
+    - name: mu1_W_pt
+      title: "W p_{T}"
+      bins: [50, 0., 1200.]
+      var: W_pt
+    - name: mu1_W_pt_var
+      title: "W p_{T}"
+      varbins: [0., 50., 100., 150., 200., 300., 400., 600., 1200.]
+      var: W_pt
+    - name: mu1_W_pt_varX
+      title: "W p_{T}"
+      varbins: [150., 200., 300., 400., 600., 1200.]
+      var: W_pt
+    - name: mu1_W_pt_varY
+      title: "W p_{T}"
+      varbins: [150., 200., 250., 350., 450., 650., 800., 1200.]
+      var: W_pt
+    - name: mu1_W_mt
+      title: "W m_{T}"
+      bins: [50, 0., 600.]
+      var: W_mt
+    - name: mu1_ISRJet_pt
+      title: "ISR Jet p_{T}"
+      bins: [50, 0., 600.]
+      var: ISRJets_pt
+
+- dataframe: df_mu2
+  weight: the_weight
+  data_samples: SingleMuon
+  Histo1D:
+    - name: mu2_pt
+      title: "Leading #mu p_{T}"
+      bins: [50, 0., 600.]
+      var: ll_pt
+    - name: mu2_phi
+      title: "leading #mu #phi"
+      bins: [50, -3.14159, 3.14159]
+      var: ll_phi
+    - name: mu2_eta
+      title: "Leading #mu #eta"
+      bins: [50, -3, 3.]
+      var: ll_eta
+    - name: mu2_LT
+      title: "L_{T}"
+      bins: [50, 0., 600.]
+      var: LT
+    - name: mu2_HT
+      title: "H_{T}"
+      bins: [50, 0., 600.]
+      var: HT
+    - name: mu2_MET
+      title: "ME_{T}"
+      bins: [50, 0., 600.]
+      var: met_pt
+    - name: mu2_MET_phi
+      title: "ME_{T} #phi"
+      bins: [50, -3.14159, 3.14159]
+      var: met_phi
+    - name: mu2_W_pt
+      title: "W p_{T}"
+      bins: [50, 0., 1200.]
+      var: W_pt
+    - name: mu2_W_pt_var
+      title: "W p_{T}"
+      varbins: [0., 50., 100., 150., 200., 300., 400., 600., 1200.]
+      var: W_pt
+    - name: mu2_W_pt_varX
+      title: "W p_{T}"
+      varbins: [150., 200., 300., 400., 600., 1200.]
+      var: W_pt
+    - name: mu2_W_pt_varY
+      title: "W p_{T}"
+      varbins: [150., 200., 250., 350., 450., 650., 800., 1200.]
+      var: W_pt
+    - name: mu2_W_mt
+      title: "W m_{T}"
+      bins: [50, 0., 600.]
+      var: W_mt
+    - name: mu2_ISRJet_pt
+      title: "ISR Jet p_{T}"
+      bins: [50, 0., 600.]
+      var: ISRJets_pt
+
+- dataframe: df_mu3
+  weight: the_weight
+  data_samples: SingleMuon
+  Histo1D:
+    - name: mu3_pt
+      title: "Leading #mu p_{T}"
+      bins: [50, 0., 600.]
+      var: ll_pt
+    - name: mu3_phi
+      title: "leading #mu #phi"
+      bins: [50, -3.14159, 3.14159]
+      var: ll_phi
+    - name: mu3_eta
+      title: "Leading #mu #eta"
+      bins: [50, -3, 3.]
+      var: ll_eta
+    - name: mu3_LT
+      title: "L_{T}"
+      bins: [50, 0., 600.]
+      var: LT
+    - name: mu3_HT
+      title: "H_{T}"
+      bins: [50, 0., 600.]
+      var: HT
+    - name: mu3_MET
+      title: "ME_{T}"
+      bins: [50, 0., 600.]
+      var: met_pt
+    - name: mu3_MET_phi
+      title: "ME_{T} #phi"
+      bins: [50, -3.14159, 3.14159]
+      var: met_phi
+    - name: mu3_W_pt
+      title: "W p_{T}"
+      bins: [50, 0., 1200.]
+      var: W_pt
+    - name: mu3_W_pt_var
+      title: "W p_{T}"
+      varbins: [0., 50., 100., 150., 200., 300., 400., 600., 1200.]
+      var: W_pt
+    - name: mu3_W_pt_varX
+      title: "W p_{T}"
+      varbins: [150., 200., 300., 400., 600., 1200.]
+      var: W_pt
+    - name: mu3_W_pt_varY
+      title: "W p_{T}"
+      varbins: [150., 200., 250., 350., 450., 650., 800., 1200.]
+      var: W_pt
+    - name: mu3_W_mt
+      title: "W m_{T}"
+      bins: [50, 0., 600.]
+      var: W_mt
+    - name: mu3_W_pt_1
+      title: "W p_{T} for m_{T}>50."
+      bins: [50, 0., 1200.]
+      var: W_pt
+      when: W_mt>50.
+    - name: mu3_W_pt_var_1
+      title: "W p_{T} for m_{T}>50."
+      varbins: [0., 50., 100., 150., 200., 300., 400., 600., 1200.]
+      var: W_pt
+      when: W_mt>50.
+    - name: mu3_W_pt_varX_1
+      title: "W p_{T} for m_{T}>50."
+      varbins: [150., 200., 300., 400., 600., 1200.]
+      var: W_pt
+      when: W_mt>50.
+    - name: mu3_W_pt_varY_1
+      title: "W p_{T} for m_{T}>50."
+      varbins: [150., 200., 250., 350., 450., 650., 800., 1200.]
+      var: W_pt
+      when: W_mt>50.
+    - name: mu3_ISRJet_pt
+      title: "ISR Jet p_{T}"
+      bins: [50, 0., 600.]
+      var:  ISRJets_pt
+
+- dataframe: df_el1
+  weight: the_weight
+  data_samples: SingleElectron
+  Histo1D:
+    - name: el1_pt
+      title: "Leading e p_{T}"
+      bins: [50, 0., 600.]
+      var: ll_pt
+    - name: el1_phi
+      title: "Leading e #phi"
+      bins: [50, -3.14159, 3.14159]
+      var: ll_phi
+    - name: el1_eta
+      title: "Leading e #eta"
+      bins: [50, -3, 3.]
+      var: ll_eta
+    - name: el1_LT
+      title: "L_{T}"
+      bins: [100, 0., 600.]
+      var: LT
+    - name: el1_HT
+      title: "H_{T}"
+      bins: [100, 0., 600.]
+      var: HT
+    - name: el1_MET
+      title: "ME_{T}"
+      bins: [50, 0., 600.]
+      var: met_pt
+    - name: el1_MET_phi
+      title: "ME_{T} #phi"
+      bins: [50, -3.14159, 3.14159]
+      var: met_phi
+    - name: el1_W_pt
+      title: "W p_{T}"
+      bins: [50, 0., 1200.]
+      var: W_pt
+    - name: el1_W_pt_var
+      title: "W p_{T}"
+      varbins: [0., 50., 100., 150., 200., 300., 400., 600., 1200.]
+      var: W_pt
+    - name: el1_W_pt_varX
+      title: "W p_{T}"
+      varbins: [150., 200., 300., 400., 600., 1200.]
+      var: W_pt
+    - name: el1_W_pt_varY
+      title: "W p_{T}"
+      varbins: [150., 200., 250., 350., 450., 650., 800., 1200.]
+      var: W_pt
+    - name: el1_W_mt
+      title: "W m_{T}"
+      bins: [50, 0., 600.]
+      var: W_mt
+    - name: el1_ISRJet_pt
+      title: "ISR Jet p_{T}"
+      bins: [50, 0., 600.]
+      var: ISRJets_pt
+
+- dataframe: df_el2
+  weight: the_weight
+  data_samples: SingleElectron
+  Histo1D:
+    - name: el2_pt
+      title: "Leading e p_{T}"
+      bins: [50, 0., 600.]
+      var: ll_pt
+    - name: el2_phi
+      title: "Leading e #phi"
+      bins: [50, -3.14159, 3.14159]
+      var: ll_phi
+    - name: el2_eta
+      title: "Leading e #eta"
+      bins: [50, -3, 3.]
+      var: ll_eta
+    - name: el2_LT
+      title: "L_{T}"
+      bins: [100, 0., 600.]
+      var: LT
+    - name: el2_HT
+      title: "H_{T}"
+      bins: [100, 0., 600.]
+      var: HT
+    - name: el2_MET
+      title: "ME_{T}"
+      bins: [50, 0., 600.]
+      var: met_pt
+    - name: el2_MET_phi
+      title: "ME_{T} #phi"
+      bins: [50, -3.14159, 3.14159]
+      var: met_phi
+    - name: el2_W_pt
+      title: "W p_{T}"
+      bins: [50, 0., 1200.]
+      var: W_pt
+    - name: el2_W_pt_var
+      title: "W p_{T}"
+      varbins: [0., 50., 100., 150., 200., 300., 400., 600., 1200.]
+      var: W_pt
+    - name: el2_W_pt_varX
+      title: "W p_{T}"
+      varbins: [150., 200., 300., 400., 600., 1200.]
+      var: W_pt
+    - name: el2_W_pt_varY
+      title: "W p_{T}"
+      varbins: [150., 200., 250., 350., 450., 650., 800., 1200.]
+      var: W_pt
+    - name: el2_W_mt
+      title: "W m_{T}"
+      bins: [50, 0., 600.]
+      var: W_mt
+    - name: el2_ISRJet_pt
+      title: "ISR Jet p_{T}"
+      bins: [50, 0., 600.]
+      var: ISRJets_pt
+
+- dataframe: df_el3
+  weight: the_weight
+  data_samples: SingleElectron
+  Histo1D:
+    - name: el3_pt
+      title: "Leading e p_{T}"
+      bins: [50, 0., 600.]
+      var: ll_pt
+    - name: el3_phi
+      title: "Leading e #phi"
+      bins: [50, -3.14159, 3.14159]
+      var: ll_phi
+    - name: el3_eta
+      title: "Leading e #eta"
+      bins: [50, -3, 3.]
+      var: ll_eta
+    - name: el3_LT
+      title: "L_{T}"
+      bins: [100, 0., 600.]
+      var: LT
+    - name: el3_HT
+      title: "H_{T}"
+      bins: [100, 0., 600.]
+      var: HT
+    - name: el3_MET
+      title: "ME_{T}"
+      bins: [50, 0., 600.]
+      var: met_pt
+    - name: el3_MET_phi
+      title: "ME_{T} #phi"
+      bins: [50, -3.14159, 3.14159]
+      var: met_phi
+    - name: el3_W_pt
+      title: "W p_{T}"
+      bins: [50, 0., 1200.]
+      var: W_pt
+    - name: el3_W_pt_var
+      title: "W p_{T}"
+      varbins: [0., 50., 100., 150., 200., 300., 400., 600., 1200.]
+      var: W_pt
+    - name: el3_W_pt_varX
+      title: "W p_{T}"
+      varbins: [150., 200., 300., 400., 600., 1200.]
+      var: W_pt
+    - name: el3_W_pt_varY
+      title: "W p_{T}"
+      varbins: [150., 200., 250., 350., 450., 650., 800., 1200.]
+      var: W_pt
+    - name: el3_W_mt
+      title: "W m_{T}"
+      bins: [50, 0., 600.]
+      var: W_mt
+    - name: el3_W_pt_1
+      title: "W p_{T} for M_{T}>50"
+      bins: [50, 0., 1200.]
+      var: W_pt
+      when: W_mt>50.
+    - name: el3_W_pt_var_1
+      title: "W p_{T} for M_{T}>50"
+      varbins: [0., 50., 100., 150., 200., 300., 400., 600., 1200.]
+      var: W_pt
+      when: W_mt>50.
+    - name: el3_W_pt_varX_1
+      title: "W p_{T} for M_{T}>50"
+      varbins: [150., 200., 300., 400., 600., 1200.]
+      var: W_pt
+      when: W_mt>50.
+    - name: el3_W_pt_varY_1
+      title: "W p_{T} for M_{T}>50"
+      varbins: [150., 200., 250., 350., 450., 650., 800., 1200.]
+      var: W_pt
+      when: W_mt>50.
+      
+    - name: el3_ISRJet_pt
+      title: "ISR Jet p_{T}"
+      bins: [50, 0., 1200.]
+      var: ISRJets_pt

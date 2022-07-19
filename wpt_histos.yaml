@@ -1,0 +1,212 @@
+---
+- dataframe: muon
+  weight: the_weight
+  data_samples: SingleMuon
+  Histo1D:
+    - name: GoodMuon_pt
+      title: "Good #mu p_{T}"
+      bins: [100, 0., 600.]
+    - name: GoodMuon_phi
+      title: "Good #mu #phi"
+      bins: [100, -3.14159, 3.14159]
+    - name: GoodMuon_eta
+      title: "Good #mu #eta"
+      bins: [100, -3, 3]
+    - name: GoodMuon_pfRelIso03_all
+      title: "Good #mu RelIso03"
+      bins: [100, 0., 0.5]
+      var: Muon_pfRelIso03_all[GoodMuon]
+    - name: GoodMuon_dxy
+      title: "Good #mu #Delta_{xy}"
+      bins: [100, -0.5, 0.5]
+      var: Muon_dxy[GoodMuon]
+    - name: GoodMuon_dz
+      title: "Good #mu #Delta_{z}"
+      bins: [100, -0.5, 0.5]
+      var: Muon_dz[GoodMuon]
+    - name: GoodMuon_sxy
+      title: "Good #mu #sigma_{xy}"
+      bins: [100, -10., 10]
+      var: Muon_dxy[GoodMuon]/Muon_dxyErr[GoodMuon]
+    - name: GoodMuon_sz
+      title: "Good #mu #sigma_{z}"
+      bins: [100, -10., 10]
+      var: Muon_dz[GoodMuon]/Muon_dzErr[GoodMuon]
+    - name: muon_pt
+      title: "Leading #mu p_{T}"
+      bins: [50, 0., 600.]
+      var: ll_pt
+    - name: muon_phi
+      title: "leading #mu #phi"
+      bins: [50, -3.14159, 3.14159]
+      var: ll_phi
+    - name: muon_eta
+      title: "Leading #mu #eta"
+      bins: [50, -3, 3.]
+      var: ll_eta
+    - name: muon_LT
+      title: "L_{T}"
+      bins: [50, 0., 600.]
+      var: LT
+    - name: muon_HT
+      title: "H_{T}"
+      bins: [50, 0., 600.]
+      var: HT
+    - name: muon_MET
+      title: "ME_{T}"
+      bins: [50, 0., 600.]
+      var: met_pt
+    - name: muon_MET_phi
+      title: "ME_{T} #phi"
+      bins: [50, -3.14159, 3.14159]
+      var: met_phi
+    - name: muon_W_pt
+      title: "W p_{T}"
+      bins: [50, 0., 1200.]
+      var: W_pt
+    - name: muon_W_pt_var
+      title: "W p_{T}"
+      varbins: [0., 50., 100., 150., 200., 300., 400., 600., 1200.]
+      var: W_pt
+    - name: muon_W_pt_varX
+      title: "W p_{T}"
+      varbins: [150., 200., 300., 400., 600., 1200.]
+      var: W_pt
+    - name: muon_W_pt_varY
+      title: "W p_{T}"
+      varbins: [150., 200., 250., 350., 450., 650., 800., 1200.]
+      var: W_pt
+    - name: muon_W_mt
+      title: "W m_{T}"
+      bins: [50, 0., 600.]
+      var: W_mt
+    - name: muon_W_pt_1
+      title: "W p_{T} for m_{T}>50."
+      bins: [50, 0., 1200.]
+      var: W_pt
+      when: W_mt>50.
+    - name: muon_W_pt_var_1
+      title: "W p_{T} for m_{T}>50."
+      varbins: [0., 50., 100., 150., 200., 300., 400., 600., 1200.]
+      var: W_pt
+      when: W_mt>50.
+    - name: muon_W_pt_varX_1
+      title: "W p_{T} for m_{T}>50."
+      varbins: [150., 200., 300., 400., 600., 1200.]
+      var: W_pt
+      when: W_mt>50.
+    - name: muon_W_pt_varY_1
+      title: "W p_{T} for m_{T}>50."
+      varbins: [150., 200., 250., 350., 450., 650., 800., 1200.]
+      var: W_pt
+      when: W_mt>50.
+    - name: muon_ISRJet_pt
+      title: "ISR Jet p_{T}"
+      bins: [50, 0., 600.]
+      var:  ISRJets_pt
+
+- dataframe: elec
+  weight: the_weight
+  data_samples: SingleElectron
+  Histo1D:  
+    - name: GoodElectron_pt
+      title: "Good #mu p_{T}"
+      bins: [100, 0., 600.]
+    - name: GoodElectron_phi
+      title: "Good #mu #phi"
+      bins: [100, -3.14159, 3.14159]
+    - name: GoodElectron_eta
+      title: "Good #mu #eta"
+      bins: [100, -3, 3]
+    - name: GoodElectron_pfRelIso03_all
+      title: "Good #mu RelIso03"
+      bins: [100, 0., 0.5]
+      var: Electron_pfRelIso03_all[GoodElectron]
+    - name: GoodElectron_dxy
+      title: "Good #mu #Delta_{xy}"
+      bins: [100, -0.5, 0.5]
+      var: Electron_dxy[GoodElectron]
+    - name: GoodElectron_dz
+      title: "Good #mu #Delta_{z}"
+      bins: [100, -0.5, 0.5]
+      var: Electron_dz[GoodElectron]
+    - name: GoodElectron_sxy
+      title: "Good #mu #sigma_{xy}"
+      bins: [100, -10., 10]
+      var: Electron_dxy[GoodElectron]/Electron_dxyErr[GoodElectron]
+    - name: GoodElectron_sz
+      title: "Good #mu #sigma_{z}"
+      bins: [100, -10., 10]
+      var: Electron_dz[GoodElectron]/Electron_dzErr[GoodElectron]
+    - name: elec_pt
+      title: "Leading e p_{T}"
+      bins: [50, 0., 600.]
+      var: ll_pt
+    - name: elec_phi
+      title: "leading e #phi"
+      bins: [50, -3.14159, 3.14159]
+      var: ll_phi
+    - name: elec_eta
+      title: "Leading e #eta"
+      bins: [50, -3, 3.]
+      var: ll_eta
+    - name: elec_LT
+      title: "L_{T}"
+      bins: [50, 0., 600.]
+      var: LT
+    - name: elec_HT
+      title: "H_{T}"
+      bins: [50, 0., 600.]
+      var: HT
+    - name: elec_MET
+      title: "ME_{T}"
+      bins: [50, 0., 600.]
+      var: met_pt
+    - name: elec_MET_phi
+      title: "ME_{T} #phi"
+      bins: [50, -3.14159, 3.14159]
+      var: met_phi
+    - name: elec_W_pt
+      title: "W p_{T}"
+      bins: [50, 0., 1200.]
+      var: W_pt
+    - name: elec_W_pt_var
+      title: "W p_{T}"
+      varbins: [0., 50., 100., 150., 200., 300., 400., 600., 1200.]
+      var: W_pt
+    - name: elec_W_pt_varX
+      title: "W p_{T}"
+      varbins: [150., 200., 300., 400., 600., 1200.]
+      var: W_pt
+    - name: elec_W_pt_varY
+      title: "W p_{T}"
+      varbins: [150., 200., 250., 350., 450., 650., 800., 1200.]
+      var: W_pt
+    - name: elec_W_mt
+      title: "W m_{T}"
+      bins: [50, 0., 600.]
+      var: W_mt
+    - name: elec_W_pt_1
+      title: "W p_{T} for m_{T}>50."
+      bins: [50, 0., 1200.]
+      var: W_pt
+      when: W_mt>50.
+    - name: elec_W_pt_var_1
+      title: "W p_{T} for m_{T}>50."
+      varbins: [0., 50., 100., 150., 200., 300., 400., 600., 1200.]
+      var: W_pt
+      when: W_mt>50.
+    - name: elec_W_pt_varX_1
+      title: "W p_{T} for m_{T}>50."
+      varbins: [150., 200., 300., 400., 600., 1200.]
+      var: W_pt
+      when: W_mt>50.
+    - name: elec_W_pt_varY_1
+      title: "W p_{T} for m_{T}>50."
+      varbins: [150., 200., 250., 350., 450., 650., 800., 1200.]
+      var: W_pt
+      when: W_mt>50.
+    - name: elec_ISRJet_pt
+      title: "ISR Jet p_{T}"
+      bins: [50, 0., 600.]
+      var:  ISRJets_pt

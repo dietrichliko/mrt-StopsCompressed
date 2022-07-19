@@ -1,0 +1,14 @@
+{
+    "editor.formatOnSave": true,
+    "python.formatting.provider": "black",
+    "python.linting.mypyEnabled": true,
+    "python.linting.flake8Enabled": true,
+    "pythonIndent.trimLinesWithOnlyWhitespace": true,
+    "pythonIndent.useTabOnHangingIndent": true,
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": false,
+            "source.organizeImports.reorder-python-imports": true
+        },
+    }
+}
