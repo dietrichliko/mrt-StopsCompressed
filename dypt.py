@@ -14,6 +14,8 @@ from typing import Any
 import click
 import ROOT
 
+import dask.distributed as dd
+
 DataFrame = Any
 
 ROOT.PyConfig.IgnoreCommandLineOptions = True
@@ -27,6 +29,10 @@ log = logging.getLogger("mrtools")
 cfg = config.get()
 
 BASE_DIR = pathlib.Path(__file__).absolute().parent
+CORRECTIONLIB_DIR = (
+    pathlib.Path(os.environ["CONDA_PREFIX"])
+    / "lib/python3.10/site-packages/correctionlib"
+)
 DEFAULT_OUTPUT = pathlib.Path(
     "/scratch-cbe/users", os.environ["USER"], "StopsCompressed/plots"
 )
@@ -66,14 +72,43 @@ def filter_flags(df: Any, flags: list[str]) -> Any:
         return df
 
 
+def init_muon_sf(period: str, file: str, muon_id: str):
+    """Init muon scale factor."""
+    try:
+        ROOT.muon_sf
+    except AttributeError:
+        ROOT.gROOT.ProcessLine("std::unique_ptr<MuonSF> muon_sf;")
+
+    ROOT.gROOT.ProcessLine(
+        f'muon_sf = std::make_unique<MuonSF>("{period}", "{file}", "{muon_id}");'
+    )
+
+
+def init_elec_sf(period: str, file: str, working_point: str):
+    """Init electroin scale factor."""
+    try:
+        ROOT.elec_sf
+    except AttributeError:
+        ROOT.gROOT.ProcessLine("std::unique_ptr<ElectronSF> elec_sf;")
+
+    ROOT.gROOT.ProcessLine(
+        "elec_sf = "
+        f'std::make_unique<ElectronSF>("{period}", "{file}", "{working_point}");'
+    )
+
+
 class DYPTAnalysis(analysis.HistoAnalysis):
     """Dell Yan p_T analysis."""
 
     tight: bool
+    lepton_sf: bool
+    period: str
     muon_lumi: float
     elec_lumi: float
     muon_trigger: list[str]
     elec_trigger: list[str]
+    muon_sf_path: str
+    elec_sf_path: str
 
     def __init__(
         self,
@@ -81,10 +116,10 @@ class DYPTAnalysis(analysis.HistoAnalysis):
         output: pathlib.Path,
         small: bool,
         tight: bool,
-        muon_int_lumi: float,
-        elec_int_lumi: float,
-        muon_trigger: list[str],
-        elec_trigger: list[str],
+        lepton_sf: bool,
+        period: str,
+        muon_attrs: dict[str, Any],
+        elec_attrs: dict[str, Any],
     ) -> None:
         """Init w_pt analysis.
 
@@ -93,17 +128,34 @@ class DYPTAnalysis(analysis.HistoAnalysis):
             output (Path): Output directory
             small (bool): reduce sample size for debugging
             tight (bool): use tight muon definitions
-            muon_int_lumi (float): Integrated luminosity for muons sample
-            elec_int_lumi (float): Integrated luminosity for electron sample
-            muon_trigger (list[str]): Muon trigger selection
-            elec_trigger (list[str]): Electron trigger selection
+            lepton_sf (bool): apply lepton scale factors
+            period: str
+            muon_attrs (dict[str, Any]): Attributes of muon sample
+            elec_attrs (dict[str, Any]): attributes of electron sample
         """
         super().__init__(histo_file, output, small)
         self.tight = tight
-        self.muon_int_lumi = muon_int_lumi
-        self.elec_int_lumi = elec_int_lumi
-        self.muon_trigger = muon_trigger
-        self.elec_trigger = elec_trigger
+        self.lepton_sf = lepton_sf
+        self.period = period
+
+        self.muon_trigger = muon_attrs["trigger"]
+        self.muon_int_lumi = muon_attrs["integrated_luminosity"]
+        self.muon_sf_path = (
+            f"{BASE_DIR}/jsonpog-integration/POG" f"/MUO/{period[3:]}_UL/muon_Z.json.gz"
+        )
+        log.debug("Muon trigger: %s", " || ".join(self.muon_trigger))
+        log.debug("Muon int. luminosity: %.2f", self.muon_int_lumi)
+        log.debug("Muon sf path: %s", self.muon_sf_path)
+
+        self.elec_trigger = elec_attrs["trigger"]
+        self.elec_int_lumi = elec_attrs["integrated_luminosity"]
+        self.elec_sf_path = (
+            f"{BASE_DIR}/jsonpog-integration/POG"
+            f"/EGM/{period[3:]}_UL/electron.json.gz"
+        )
+        log.debug("Electron trigger: %s", " || ".join(self.elec_trigger))
+        log.debug("Electron inv lumi: %.2f", self.elec_int_lumi)
+        log.debug("Electron sf path: %s", self.elec_sf_path)
 
     def define(self, sample: model.Sample, df: DataFrame) -> dict[str, DataFrame]:
         """Define dataframes.
@@ -120,19 +172,23 @@ class DYPTAnalysis(analysis.HistoAnalysis):
         if self.tight:
             df = df.Define(
                 "GoodMuon",
-                "Muon_tightId && abs(Muon_eta) < 1.5 && Muon_pfRelIso03_all < 0.1",
+                "Muon_tightId && abs(Muon_eta) < 1.5 && Muon_pfRelIso03_all < 0.1 && Muon_pt > 15.",
             ).Define(
                 "GoodElectron",
-                "Electron_cutBased > 2 && abs(Electron_eta) < 1.5 && Electron_pfRelIso03_all < 0.1",  # noqa: B950
+                "Electron_cutBased > 2 && abs(Electron_eta) < 1.5 && Electron_pfRelIso03_all < 0.1 && Electron_pt > 15.",  # noqa: B950
             )
+            init_muon_sf(self.period, self.muon_sf_path, "TightID")
+            init_elec_sf(self.period, self.elec_sf_path, "Medium")
         else:
             df = df.Define(
                 "GoodMuon",
-                "Muon_mediumId && abs(Muon_eta) < 1.5 && Muon_pfRelIso03_all < 0.1",
+                "Muon_mediumId && abs(Muon_eta) < 1.5 && Muon_pfRelIso03_all < 0.1 && Muon_pt > 15.",
             ).Define(
                 "GoodElectron",
-                "Electron_cutBased > 1 && abs(Electron_eta) < 1.5 && Electron_pfRelIso03_all < 0.1",  # noqa: B950
+                "Electron_cutBased > 1 && abs(Electron_eta) < 1.5 && Electron_pfRelIso03_all < 0.1 && Electron_pt > 15.",  # noqa: B950
             )
+            init_muon_sf(self.period, self.muon_sf_path, "MediumID")
+            init_elec_sf(self.period, self.elec_sf_path, "Loose")
 
         df = (
             df.Define("GoodMuon_pt", "Muon_pt[GoodMuon]")
@@ -152,28 +208,15 @@ class DYPTAnalysis(analysis.HistoAnalysis):
         df_muon = filter_flags(df, self.muon_trigger)
         df_elec = filter_flags(df, self.elec_trigger)
 
-        if sample.type == model.SampleType.DATA:
-            muon_weight = "1"
-            elec_weight = "1"
-        else:
-            weights = [
-                "weight",
-                "reweightPU",
-                "reweightBTag_SF",
-                "reweightL1Prefire",
-                #                "reweightLeptonSF",
-                "{}",
-            ]
-            muon_weight = "*".join(weights).format(self.muon_int_lumi)
-            elec_weight = "*".join(weights).format(self.elec_int_lumi)
-        log.debug("Muon weight %s", muon_weight)
-        log.debug("Electron weight %s", elec_weight)
-        df_muon = df_muon.Define("the_weight", muon_weight)
-        df_elec = df_elec.Define("the_weight", elec_weight)
-
         df_muon = (
             df_muon.Filter("GoodMuon_pt.size() == 2 && Max(GoodMuon_pt) > 40")
             .Filter("GoodMuon_charge[0] == - GoodMuon_charge[1]")
+            .Define("lx1_idx", "ArgMax(GoodMuon_pt)")
+            .Define("lx1_pt", "GoodMuon_pt[lx1_idx]")
+            .Define("lx1_eta", "GoodMuon_eta[lx1_idx]")
+            .Define("lx2_idx", "ArgMin(GoodMuon_pt)")
+            .Define("lx2_pt", "GoodMuon_pt[lx2_idx]")
+            .Define("lx2_eta", "GoodMuon_eta[lx2_idx]")
             .Define(
                 "ll_mass",
                 "InvariantMass(GoodMuon_pt,GoodMuon_eta,GoodMuon_phi,GoodMuon_mass)",
@@ -184,16 +227,73 @@ class DYPTAnalysis(analysis.HistoAnalysis):
         df_elec = (
             df_elec.Filter("GoodElectron_pt.size() == 2 && Max(GoodElectron_pt) > 40")
             .Filter("GoodElectron_charge[0] == - GoodElectron_charge[1]")
+            .Define("lx1_idx", "ArgMax(GoodElectron_pt)")
+            .Define("lx1_pt", "GoodElectron_pt[lx1_idx]")
+            .Define("lx1_eta", "GoodElectron_eta[lx1_idx]")
+            .Define("lx2_idx", "ArgMin(GoodElectron_pt)")
+            .Define("lx2_pt", "GoodElectron_pt[lx2_idx]")
+            .Define("lx2_eta", "GoodElectron_eta[lx2_idx]")
             .Define(
                 "ll_mass",
                 "InvariantMass(GoodElectron_pt,GoodElectron_eta,GoodElectron_phi,GoodElectron_mass)",
             )
             .Define("ll_pt", "TransverseMomentum(GoodElectron_pt,GoodElectron_phi)")
         )
+        if sample.type == model.SampleType.DATA:
+            muon_weight = "1"
+            elec_weight = "1"
+            df_muon = df_muon.Define("lx1_sf", "1.0").Define("lx2_sf", "1.0")
+            df_elec = df_elec.Define("lx1_sf", "1.0").Define("lx2_sf", "1.0")
+        else:
+            if self.lepton_sf:
+                df_muon = df_muon.Define(
+                    "lx1_sf", "(*muon_sf)(lx1_pt, lx1_eta)"
+                ).Define("lx2_sf", "(*muon_sf)(lx2_pt, lx2_eta)")
+                df_elec = df_elec.Define(
+                    "lx1_sf", "(*elec_sf)(lx1_pt, lx1_eta)"
+                ).Define("lx2_sf", "(*elec_sf)(lx2_pt, lx2_eta)")
+            else:
+                df_muon = df_muon.Define("lx1_sf", "1.0").Define("lx2_sf", "1.0")
+                df_elec = df_elec.Define("lx1_sf", "1.0").Define("lx2_sf", "1.0")
+
+            weights = [
+                "weight",
+                "reweightPU",
+                "reweightBTag_SF",
+                "reweightL1Prefire",
+                "lx1_sf",
+                "lx2_sf",
+                "{}",
+            ]
+
+            # if sample.name == "DYJetsToLL_M50_LO":
+            #     log.debug("%s adding leptonSF", sample.name)
+            #     weights.append("reweightLeptonSF")
+            # else:
+            #     log.debug("%s", sample.name)
+            muon_weight = "*".join(weights).format(self.muon_int_lumi)
+            elec_weight = "*".join(weights).format(self.elec_int_lumi)
+        log.debug("Muon weight %s", muon_weight)
+        log.debug("Electron weight %s", elec_weight)
+        df_muon = df_muon.Define("the_weight", muon_weight)
+        df_elec = df_elec.Define("the_weight", elec_weight)
         return {"muon": df_muon, "elec": df_elec}
 
 
+class MyWorkerPlugin(analysis.WorkerPlugin):
+    """Worker plugin for initialisation of workers."""
+
+    def setup(self, worker: dd.Worker) -> None:
+        """Setup ROOT on worker process."""
+        super().setup(worker)
+        ROOT.gROOT.ProcessLine(f'#include "{BASE_DIR}/dypt_inc.h"')
+        ROOT.gROOT.ProcessLine(f".include {CORRECTIONLIB_DIR}/include")
+        ROOT.gSystem.Load(f"{CORRECTIONLIB_DIR}/lib/libcorrectionlib.so")
+        ROOT.gROOT.ProcessLine(f'#include "{BASE_DIR}/leptonsf_inc.h"')
+
+
 @click.command(context_settings=dict(max_content_width=120))
+@click.argument("dataset", nargs=-1)
 @click.option(
     "-s",
     "--sample-file",
@@ -241,11 +341,13 @@ class DYPTAnalysis(analysis.HistoAnalysis):
 @click.option("--histos/--no-histos", default=True, help="Fill histograms.")
 @click.option("--plots/--no-plots", default=True, help="Make plots from histograms.")
 @click.option("--tight/--no-tight", default=True, help="Tight lepton selection.")
+@click.option("--lepton-sf/--no-lepton-sf", default=True, help="Apply lepton sf")
 @config.click_options()
 @cache.click_options()
 @analysis.click_options()
 @utils.click_option_logging(log)
 def main(
+    dataset: list[str],
     sample_file: list[pathlib.Path],
     period: list[str],
     name: str,
@@ -255,6 +357,7 @@ def main(
     histos: bool,
     plots: bool,
     tight: bool,
+    lepton_sf: bool,
 ):
     """W_pt Analysis."""
     cfg.load()
@@ -266,7 +369,7 @@ def main(
             sc.load(sf)
 
         if histos:
-            proc = analysis.Processor([f"{BASE_DIR}/dypt_inc.h"])
+            proc = analysis.Processor(MyWorkerPlugin())
             for p in period:
                 log.info("Filling histos for %s", p)
 
@@ -277,28 +380,20 @@ def main(
                     elec_sample_name = "DoubleEG"
 
                 muon_sample = next(sc.find(p, muon_sample_name))
-                muon_trigger = muon_sample.attrs["trigger"]
-                muon_int_lumi = muon_sample.attrs["integrated_luminosity"]
-                log.debug("Muon trigger: %s", " || ".join(muon_trigger))
-                log.debug("Muon int. luminosity: %.2f", muon_int_lumi)
-
                 elec_sample = next(sc.find(p, elec_sample_name))
-                elec_trigger = elec_sample.attrs["trigger"]
-                elec_int_lumi = elec_sample.attrs["integrated_luminosity"]
-                log.debug("Electron trigger: %s", " || ".join(elec_trigger))
-                log.debug("Electron inv lumi: %.2f", elec_int_lumi)
 
                 dypt_analysis = DYPTAnalysis(
                     histos_file,
                     output / f"{name}_{p}",
                     small,
                     tight,
-                    muon_int_lumi,
-                    elec_int_lumi,
-                    muon_trigger,
-                    elec_trigger,
+                    lepton_sf,
+                    p,
+                    muon_sample.attrs,
+                    elec_sample.attrs,
                 )
-                proc.run(sc, p, dypt_analysis)
+
+                proc.run(sc, p, dypt_analysis, dataset)
 
             del proc  # shutdown dask cluster
 

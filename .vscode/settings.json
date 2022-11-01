@@ -10,5 +10,14 @@
             "source.organizeImports": false,
             "source.organizeImports.reorder-python-imports": true
         },
-    }
+    },
+    "files.associations": {
+        "*.h": "cpp"
+    },
+    "C_Cpp.clang_format_fallbackStyle": "Google",
+    "C_Cpp.default.cStandard": "c17",
+    "C_Cpp.default.includePath": [
+        "/groups/hephy/cms/dietrich.liko/conda/envs/mrt/lib/python3.10/site-packages/correctionlib/include",
+        "/groups/hephy/cms/dietrich.liko/conda/envs/mrt/include/c++/v1/"
+    ]
 }

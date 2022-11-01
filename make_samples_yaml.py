@@ -28,6 +28,8 @@ def make_entry(v: dict[str, Any]) -> dict[str, Any]:
     title = v["Title"].strip()
     if title:
         entry["title"] = title
+    if v["Path"].startswith("#"):
+        entry["hidden"] = True
     if v["Color"]:
         if "attributes" not in entry:
             entry["attributes"] = {}
@@ -74,11 +76,8 @@ def main(output: TextIO, skim: str) -> None:
                 reader = csv.DictReader(inp)
 
                 for v in reader:
-                    if v["Path"].startswith("#"):
-                        continue
-
                     if v["Tag"]:
-                        path = pathlib.PurePath(v["Path"])
+                        path = pathlib.PurePath(v["Path"].lstrip("#"))
                         cpath = rpath
                         for p in path.parts:
                             pp = cpath / p

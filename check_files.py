@@ -1,9 +1,8 @@
 #!/usr/bin/env python
+"""Chcke files."""
 import csv
 import logging
-import os
 import pathlib
-import sys
 
 import click
 import ROOT
@@ -19,20 +18,21 @@ PATH = pathlib.Path("/scratch-cbe/users/dietrich.liko/StopsCompressed/nanoTuples
 
 
 def check_file(path: pathlib.Path):
-
+    """Chcke a file."""
     df = ROOT.RDataFrame("Events", str(path))
     events = df.Count()
     sum_weights = df.Sum("weight")
-    events.GetValue()
-    sum_weights.GetValue()
+    print(
+        f"{'/'.join(path.parts[-2:])} - events {events.GetValue()} - weights {sum_weights.GetValue()}"
+    )
 
 
 @click.command
 @click.argument("input", type=click.Path(exists=True, path_type=pathlib.Path))
-@click.option("--verify/--no-verify", default=False, help="Try readin the files.")
+@click.option("--verify/--no-verify", default=False, help="Try reading the files.")
 @click.option("--root-threads", default=4, help="Number of root threads.")
 def main(input: pathlib.Path, verify: bool, root_threads: int) -> None:
-
+    """Verify datasets."""
     log.setLevel(logging.DEBUG)
     ROOT.gROOT.SetBatch()
     ROOT.EnableImplicitMT(root_threads)
@@ -43,9 +43,11 @@ def main(input: pathlib.Path, verify: bool, root_threads: int) -> None:
     with open(input, "r") as csv_input:
         for e in csv.DictReader(csv_input):
             prefix = e["Path"]
+            if prefix.startswith("#"):
+                continue
             name = e["Name"]
             tag = e["Tag"]
-            if prefix.startswith("#") or not tag:
+            if not tag:
                 continue
             nr = int(e["#Files"])
             icnt = 0
@@ -80,7 +82,7 @@ def main(input: pathlib.Path, verify: bool, root_threads: int) -> None:
                 else:
                     for i in range(nr):
                         log.debug("Missing %s", sample_dir / f"{name}_{i}.root")
-	    
+
             tot1 += icnt
             tot2 += nr
             if not prefix:

@@ -2,72 +2,124 @@
 - dataframe: muon
   weight: the_weight
   data_samples: DoubleMuon
+  signal_samples: []
   Histo1D:
     - name: GoodMuon_pt
       title: "Good #mu p_{T}"
-      bins: [100, 0., 600.]
+      bins: [120, 0., 600.]
     - name: GoodMuon_phi
       title: "Good #mu #phi"
       bins: [100, -3.14159, 3.14159]
     - name: GoodMuon_eta
       title: "Good #mu #eta"
-      bins: [100, -3, 3]
+      bins: [120, -3, 3]
     - name: GoodMuon_charge
       title: "Good #mu charge"
       bins: [100, -3, 3]
+    - name: muon_l1_pt
+      title: "Leading #mu p_{T}"
+      bins: [120, 0., 600.]
+      var: lx1_pt
+      ymin_log: 10
+    - name: muon_l2_pt
+      title: "Second #mu p_{T}"
+      bins: [120, 0., 600.]
+      var: lx2_pt
+      ymin_log: 10
+    - name: muon_l1_sf
+      title: "Leading #mu SF"
+      bins: [100,0.9,1.1]
+      var: lx1_sf
+    - name: muon_l2_sf
+      title: "Second #mu SF"
+      bins: [100,0.9,1.1]
+      var: lx2_sf
     - name: muon_ll_mass
       title: "Dilepton mass"
-      bins: [100,60.,120.]
+      bins: [120,60.,120.]
       var: ll_mass
+      ymin_log: 10
     - name: muon_ll_pt
       title: "Dimuon p_{T}"
       bins: [100,0.,1000.]
       var: ll_pt
+      ymin_log: 10
     - name: muon_ll_pt_1
       title: "Dimuon p_{T} (80 < m < 100)"
       bins: [100,0.,1000.]
       var: ll_pt
+      ymin_log: 10
       when: ll_mass > 80 && ll_mass < 100
     - name: muon_ll_pt_2
       title: "Dimuon p_{T} (80 < m < 100)"
       varbins: [0., 50., 100., 150., 200., 300., 400., 600., 1200.]
       var: ll_pt
+      ymin_log: 10
       when: ll_mass > 80 && ll_mass < 100
+  # Profile1D:
+  #   - name: muon_sf_profile
+  #     title: "Muon SF vs DY #p_T"
+  #     bins: [100,0.,1000.]
+  #     var1: ll_pt
+  #     var2: "lx1_sf * lx2_sf"
 
 - dataframe: elec
   weight: the_weight
   data_samples:
     Run2018: SingleElectron
     default: DoubleEG
+  signal_samples: []
   Histo1D:  
     - name: GoodElectron_pt
-      title: "Good #mu p_{T}"
-      bins: [100, 0., 600.]
+      title: "Good e p_{T}"
+      bins: [120, 0., 600.]
     - name: GoodElectron_phi
-      title: "Good #mu #phi"
+      title: "Good e #phi"
       bins: [100, -3.14159, 3.14159]
     - name: GoodElectron_eta
-      title: "Good #mu #eta"
+      title: "Good e #eta"
       bins: [100, -3, 3]
     - name: GoodElectron_charge
-      title: "Good #mu charge"
+      title: "Good e charge"
       bins: [100, -3, 3]
+    - name: elec_l1_pt
+      title: "Leading e p_{T}"
+      bins: [120, 0., 600.]
+      var: lx1_pt
+      ymin_log: 10
+    - name: elec_l2_pt
+      title: "Second e p_{T}"
+      bins: [120, 0., 600.]
+      var: lx2_pt
+      ymin_log: 10
+    - name: elec_l1_sf
+      title: "Leading e SF"
+      bins: [100,0.9,1.1]
+      var: lx1_sf
+    - name: elec_l2_sf
+      title: "Second e SF"
+      bins: [100,0.9,1.1]
+      var: lx2_sf
     - name: elec_ll_mass
       title: "Dielectron mass"
       bins: [100,60.,120.]
       var: ll_mass
+      ymin_log: 10
     - name: elec_ll_pt
       title: "Dielectron p_{T}"
       bins: [100,0.,1000.]
       var: ll_pt
+      ymin_log: 10
     - name: elec_ll_pt_1
       title: "Dielectron p_{T} (80 < m < 100)"
       bins: [100,0.,1000.]
       var: ll_pt
+      ymin_log: 10
       when: ll_mass > 80 && ll_mass < 100
     - name: elec_ll_pt_2
       title: "Dielectron p_{T} (80 < m < 100)"
       varbins: [0., 50., 100., 150., 200., 300., 400., 600., 1200.]
       var: ll_pt
+      ymin_log: 10
       when: ll_mass > 80 && ll_mass < 100
 
