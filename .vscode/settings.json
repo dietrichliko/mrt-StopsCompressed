@@ -5,12 +5,12 @@
     "python.linting.flake8Enabled": true,
     "pythonIndent.trimLinesWithOnlyWhitespace": true,
     "pythonIndent.useTabOnHangingIndent": true,
-    "[python]": {
-        "editor.codeActionsOnSave": {
-            "source.organizeImports": false,
-            "source.organizeImports.reorder-python-imports": true
-        },
-    },
+    // "[python]": {
+    //     "editor.codeActionsOnSave": {
+    //         "source.organizeImports": false,
+    //         "source.organizeImports.reorder-python-imports": true
+    //     },
+    // },
     "files.associations": {
         "*.h": "cpp"
     },
@@ -19,5 +19,5 @@
     "C_Cpp.default.includePath": [
         "/groups/hephy/cms/dietrich.liko/conda/envs/mrt/lib/python3.10/site-packages/correctionlib/include",
         "/groups/hephy/cms/dietrich.liko/conda/envs/mrt/include/c++/v1/"
-    ]
+    ],
 }

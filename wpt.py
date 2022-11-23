@@ -13,6 +13,7 @@ from typing import Any
 
 import click
 import ROOT
+import dask.distributed as dd
 
 DataFrame = Any
 
@@ -27,6 +28,10 @@ log = logging.getLogger("mrtools")
 cfg = config.get()
 
 BASE_DIR = pathlib.Path(__file__).absolute().parent
+CORRECTIONLIB_DIR = (
+    pathlib.Path(os.environ["CONDA_PREFIX"])
+    / "lib/python3.10/site-packages/correctionlib"
+)
 DEFAULT_OUTPUT = pathlib.Path(
     "/scratch-cbe/users", os.environ["USER"], "StopsCompressed/plots"
 )
@@ -195,8 +200,19 @@ class WPTAnalysis(analysis.HistoAnalysis):
         )
         return {"muon": df_muon, "elec": df_elec}
 
+class MyWorkerPlugin(analysis.WorkerPlugin):
+    """Worker plugin for initialisation of workers."""
+
+    def setup(self, worker: dd.Worker) -> None:
+        """Setup ROOT on worker process."""
+        super().setup(worker)
+        ROOT.gROOT.ProcessLine(f'#include "{BASE_DIR}/wpt_inc.h"')
+        ROOT.gROOT.ProcessLine(f".include {CORRECTIONLIB_DIR}/include")
+        ROOT.gSystem.Load(f"{CORRECTIONLIB_DIR}/lib/libcorrectionlib.so")
+        ROOT.gROOT.ProcessLine(f'#include "{BASE_DIR}/leptonsf_inc.h"')
 
 @click.command(context_settings=dict(max_content_width=120))
+@click.argument("dataset", nargs=-1)
 @click.option(
     "-s",
     "--sample-file",
@@ -249,6 +265,7 @@ class WPTAnalysis(analysis.HistoAnalysis):
 @analysis.click_options()
 @utils.click_option_logging(log)
 def main(
+    dataset: list[str],
     sample_file: list[pathlib.Path],
     period: list[str],
     name: str,
@@ -269,11 +286,12 @@ def main(
             sc.load(sf)
 
         if histos:
-            proc = analysis.Processor([f"{BASE_DIR}/wpt_inc.h"])
+            proc = analysis.Processor(MyWorkerPlugin())
             for p in period:
                 log.info("Filling histos for %s", p)
 
                 muon_sample = next(sc.find(p, "SingleMuon"))
+                print(f"Muon Sample {muon_sample}")
                 muon_trigger = muon_sample.attrs["trigger"]
                 muon_int_lumi = muon_sample.attrs["integrated_luminosity"]
                 log.debug("Muon trigger: %s", " || ".join(muon_trigger))
@@ -295,7 +313,7 @@ def main(
                     muon_trigger,
                     elec_trigger,
                 )
-                proc.run(sc, p, wpt_analysis)
+                proc.run(sc, p, wpt_analysis, dataset)
 
             del proc  # shutdown dask cluster
 

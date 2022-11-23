@@ -43,7 +43,7 @@ def make_post_chains(period: str) -> dict[str, Any]:
 
     chains: dict[str, Any] = {}
     for dataset in os.listdir(PATH / TAG[period] / "DoubleLep"):
-        if dataset.startswith("DYJetsToLL_M50_HT"):
+        if dataset.startswith("DYJetsToLL_M50_HT") or dataset == "DYJetsToLL_M10to50_LO":
             chains[dataset] = ROOT.TChain("Events")
             cnt = 0
             for name in os.listdir(PATH / TAG[period] / "DoubleLep" / dataset):
@@ -102,7 +102,7 @@ def main(period: str, small: bool, output: pathlib.Path):
         )
 
         histos[f"{dataset}_pt"] = df[dataset].Histo1D(
-            (f"{dataset}_pt", "p_{T}", 100, 0.0, 1000.0), "genDY_pt", "weight"
+            (f"{dataset}_pt", "p_{T}", 100, 0.0, 500.0), "genDY_pt", "weight"
         )
         events[dataset] = df[dataset].Count()
 
@@ -164,6 +164,10 @@ def main(period: str, small: bool, output: pathlib.Path):
 
     c1.SaveAs("dygen02.png")
 
+    c1 = ROOT.TCanvas("c", "", 800, 400)
+    histos['DYJetsToLL_M10to50_LO_pt'].Draw()
+
+    c1.SaveAs("dygen03.png")
 
 if __name__ == "__main__":
     main()

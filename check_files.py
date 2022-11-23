@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Chcke files."""
+"""Check files."""
 import csv
 import logging
 import pathlib
