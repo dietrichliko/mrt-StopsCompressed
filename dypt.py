@@ -31,7 +31,7 @@ cfg = config.get()
 BASE_DIR = pathlib.Path(__file__).absolute().parent
 CORRECTIONLIB_DIR = (
     pathlib.Path(os.environ["CONDA_PREFIX"])
-    / "lib/python3.10/site-packages/correctionlib"
+    / "lib/python3.11/site-packages/correctionlib"
 )
 DEFAULT_OUTPUT = pathlib.Path(
     "/scratch-cbe/users", os.environ["USER"], "StopsCompressed/plots"
@@ -169,6 +169,7 @@ class DYPTAnalysis(analysis.HistoAnalysis):
         Returns:
             dict[str, DataFrame]: Dict of dataframes
         """
+        df = df.Filter("HT>100")
         if self.tight:
             df = df.Define(
                 "GoodMuon",

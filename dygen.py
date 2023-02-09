@@ -39,20 +39,57 @@ HT_BINS = [
 ]
 
 
-def make_post_chains(period: str) -> dict[str, Any]:
+def make_post_chains(period: str, ht_bins: bool) -> dict[str, Any]:
+    """Create ROOT Chains for the various datasets."""
+    if ht_bins:
+        datasets = [f"DYJetsToLL_M50_HT{ht}" for ht in HT_BINS]
+    else:
+        datasets = ["DYJetsToLL_M50_LO", "DYJetsToLL_M50_LO_ext"]
+
+    datasets.append("DYJetsToLL_M10to50_LO")
 
     chains: dict[str, Any] = {}
     for dataset in os.listdir(PATH / TAG[period] / "DoubleLep"):
-        if dataset.startswith("DYJetsToLL_M50_HT") or dataset == "DYJetsToLL_M10to50_LO":
+        # if (
+        #     dataset.startswith("DYJetsToLL_M50_HT")
+        #     or dataset == "DYJetsToLL_M10to50_LO"
+        # ):
+        if dataset in datasets:
             chains[dataset] = ROOT.TChain("Events")
             cnt = 0
             for name in os.listdir(PATH / TAG[period] / "DoubleLep" / dataset):
                 path = PATH / TAG[period] / "DoubleLep" / dataset / name
+                print(path)
                 chains[dataset].Add(str(path))
                 cnt += 1
             log.debug("Dataset %s with %d files", dataset, cnt)
 
     return chains
+
+
+def draw_header(canvas: Any, sample: str, period: str) -> Any:
+
+    canvas.cd()
+
+    t1 = ROOT.TText(0.01, 0.97, "CMS Preliminary")
+    t1.SetNDC()
+    t1.SetTextFont(40)
+    t1.SetTextSize(0.03)
+    t1.Draw()
+
+    t2 = ROOT.TText(0.9, 0.97, period)
+    t2.SetNDC()
+    t2.SetTextFont(40)
+    t2.SetTextSize(0.03)
+    t2.Draw()
+
+    t3 = ROOT.TLatex()
+    t3.SetNDC()
+    # t3.SetTextFont(40)
+    t3.SetTextSize(0.03)
+    t3.DrawLatex(0.4, 0.97, sample)
+
+    return t1, t2, t3
 
 
 @click.command(context_settings=dict(max_content_width=120))
@@ -64,6 +101,7 @@ def make_post_chains(period: str) -> dict[str, Any]:
     help="Datataking period",
     show_default=True,
 )
+@click.option("--ht-bins/--no-ht-bins", default=False)
 @click.option("--small/--no-small", default=False)
 @click.option(
     "-o",
@@ -74,7 +112,7 @@ def make_post_chains(period: str) -> dict[str, Any]:
     show_default=True,
 )
 @utils.click_option_logging(log)
-def main(period: str, small: bool, output: pathlib.Path):
+def main(period: str, small: bool, ht_bins: bool, output: pathlib.Path):
     """Drell Yan Generator Info."""
     log.info("Analysis of Drell Yan Generator info")
     ROOT.gROOT.SetBatch()
@@ -83,10 +121,8 @@ def main(period: str, small: bool, output: pathlib.Path):
         ROOT.EnableImplicitMT()
     ROOT.gInterpreter.Declare('#include "dygen_inc.h"')
 
-    chain = ROOT.TChain("Events")
-
     log.info("Period %s", period)
-    chains = make_post_chains(period)
+    chains = make_post_chains(period, ht_bins)
 
     df: dict[str, Any] = {}
     histos: dict[str, Any] = {}
@@ -98,11 +134,38 @@ def main(period: str, small: bool, output: pathlib.Path):
 
         df[dataset] = df[dataset].Define(
             "genDY_pt",
-            "GenDY_pt(GenPart_pt, GenPart_phi, GenPart_pdgId, GenPart_status, GenPart_statusFlags)",
+            "GenDY_pt(GenPart_pt, GenPart_eta, GenPart_phi, GenPart_mass, GenPart_pdgId, GenPart_status, GenPart_statusFlags)",
         )
 
-        histos[f"{dataset}_pt"] = df[dataset].Histo1D(
-            (f"{dataset}_pt", "p_{T}", 100, 0.0, 500.0), "genDY_pt", "weight"
+        df[dataset] = df[dataset].Define(
+            "genDY_mass",
+            "GenDY_mass(GenPart_pt, GenPart_eta, GenPart_phi, GenPart_mass, GenPart_pdgId, GenPart_status, GenPart_statusFlags)",
+        )
+
+        histos[f"{dataset}_pt"] = (
+            df[dataset]
+            .Filter("abs(genDY_mass-91.2)<10. && genDY_pt > 0.")
+            .Histo1D((f"{dataset}_pt", "p_{T}", 100, -2.0, 500.0), "genDY_pt", "weight")
+        )
+        histos[f"{dataset}_mass"] = df[dataset].Histo1D(
+            (f"{dataset}_mass", "Mass", 100, -2.0, 200.0), "genDY_mass", "weight"
+        )
+        histos[f"{dataset}_nJet"] = df[dataset].Histo1D(
+            (f"{dataset}_nJet", "nJet", 21, -0.5, 20.5), "nJet", "weight"
+        )
+        histos[f"{dataset}_HT"] = df[dataset].Histo1D(
+            (f"{dataset}_HT", "HT", 100, 0, 500.0), "HT", "weight"
+        )
+        df[dataset] = df[dataset].Filter("HT>100")
+        histos[f"{dataset}_pt1"] = (
+            df[dataset]
+            .Filter("abs(genDY_mass-91.2)<10. && genDY_pt > 0.")
+            .Histo1D(
+                (f"{dataset}_pt1", "p_{T}", 100, -2.0, 500.0), "genDY_pt", "weight"
+            )
+        )
+        histos[f"{dataset}_mass1"] = df[dataset].Histo1D(
+            (f"{dataset}_mass1", "Mass", 100, -2.0, 200.0), "genDY_mass", "weight"
         )
         events[dataset] = df[dataset].Count()
 
@@ -111,63 +174,127 @@ def main(period: str, small: bool, output: pathlib.Path):
     for dataset, evt in events.items():
         print(f"Number of events for dataset {dataset} is {evt.GetValue()}")
 
-    histos1 = {key: h.GetValue() for key, h in histos.items()}
+    histos = {key: h.GetValue() for key, h in histos.items()}
 
-    histos1["DYJetsToLL_M50_HTall_pt"] = histos1["DYJetsToLL_M50_HT70to100_pt"].Clone(
-        "DYJetsToLL_M50_HTall_pt"
+    histos["DYJetsToLL_pt"] = histos["DYJetsToLL_M10to50_LO_pt"].Clone("DYJetsToLL_pt")
+    histos["DYJetsToLL_mass"] = histos["DYJetsToLL_M10to50_LO_mass"].Clone(
+        "DYJetsToLL_mass"
+    )
+    histos["DYJetsToLL_pt1"] = histos["DYJetsToLL_M10to50_LO_pt1"].Clone(
+        "DYJetsToLL_pt1"
+    )
+    histos["DYJetsToLL_mass1"] = histos["DYJetsToLL_M10to50_LO_mass1"].Clone(
+        "DYJetsToLL_mass1"
     )
 
-    for ht in HT_BINS[1:]:
-        histos1["DYJetsToLL_M50_HTall_pt"] = (
-            histos1["DYJetsToLL_M50_HTall_pt"] + histos1[f"DYJetsToLL_M50_HT{ht}_pt"]
+    if ht_bins:
+        for ht in HT_BINS[1:]:
+            histos["DYJetsToLL_pt"] = (
+                histos["DYJetsToLL_pt"] + histos[f"DYJetsToLL_M50_HT{ht}_pt"]
+            )
+            histos["DYJetsToLL_mass"] = (
+                histos["DYJetsToLL_mass"] + histos[f"DYJetsToLL_M50_HT{ht}_mass"]
+            )
+            histos["DYJetsToLL_pt1"] = (
+                histos["DYJetsToLL_pt1"] + histos[f"DYJetsToLL_M50_HT{ht}_pt1"]
+            )
+            histos["DYJetsToLL_mass1"] = (
+                histos["DYJetsToLL_mass1"] + histos[f"DYJetsToLL_M50_HT{ht}_mass1"]
+            )
+            sample = "Z^{*} / #gamma #rightarrow Jets + l^{+}l^{-} (HT Bins)"
+    else:
+        histos["DYJetsToLL_pt"] = (
+            histos["DYJetsToLL_pt"] + histos["DYJetsToLL_M50_LO_pt"]
         )
+        histos["DYJetsToLL_mass"] = (
+            histos["DYJetsToLL_mass"] + histos["DYJetsToLL_M50_LO_mass"]
+        )
+        histos["DYJetsToLL_pt1"] = (
+            histos["DYJetsToLL_pt1"] + histos["DYJetsToLL_M50_LO_pt1"]
+        )
+        histos["DYJetsToLL_mass1"] = (
+            histos["DYJetsToLL_mass1"] + histos["DYJetsToLL_M50_LO_mass1"]
+        )
+        sample = "Z^{*} / #gamma #rightarrow Jets + l^{+}l^{-} (No HT Bins)"
 
     out = ROOT.TFile(str(output), "RECREATE")
-    for h in histos1.values():
+    for h in histos.values():
         h.Write()
     out.Close()
 
-    c1 = ROOT.TCanvas("c", "", 800, 800)
-    c1.Divide(3, 3, 0.01, 0.01)
+    c1 = ROOT.TCanvas("c1", "", 800, 600)
 
-    ht_bins = HT_BINS
+    c1.Divide(2, 2, 0.01, 0.01)
+    ROOT.gStyle.SetOptStat(0)
 
-    for i in range(len(HT_BINS)):
-        p = c1.cd(i + 1)
-        # p.SetLogy()
-        # p.SetLogx()
-        h = histos1[f"DYJetsToLL_M50_HT{ht_bins[i]}_pt"]
-        h.SetTitle(f"DYJetsToLL_M50_HT{ht_bins[i]}")
-        h.SetStats(False)
-        h.Draw()
+    histos["DYJetsToLL_mass"].SetTitle(
+        "Dilepton Mass;Mass [GeV/c^{2}];Weighted entries"
+    )
+    histos["DYJetsToLL_mass1"].SetFillColor(ROOT.kBlue)
+    histos["DYJetsToLL_mass1"].SetFillStyle(3944)
 
-    c1.SaveAs("dygen01.png")
+    c1.cd(1)
+    histos["DYJetsToLL_mass"].Draw("hist")
+    histos["DYJetsToLL_mass1"].Draw("same hist")
+    p12 = c1.cd(2)
+    p12.SetLogy()
+    histos["DYJetsToLL_mass"].Draw("hist")
+    histos["DYJetsToLL_mass1"].Draw("same hist")
 
-    c1 = ROOT.TCanvas("c", "", 800, 400)
-    c1.Divide(2, 1, 0.01, 0.01)
+    histos["DYJetsToLL_pt"].SetTitle(
+        "Dilepton p_{T} for |m_{ll}-M_{Z}| < 10;p_{T} [GeV/c];Weighted entries"
+    )
+    histos["DYJetsToLL_pt1"].SetFillColor(ROOT.kBlue)
+    histos["DYJetsToLL_pt1"].SetFillStyle(3944)
 
-    histos1["DYJetsToLL_M50_HTall_pt"].SetStats(False)
-    histos1["DYJetsToLL_M50_HTall_pt"].SetTitle("Dilepton p_{T} in DYJetsToLL, M50, HT Binning")
-    
-    p1 = c1.cd(1)
-    histos1["DYJetsToLL_M50_HTall_pt"].Draw()
-    c1.Update()
-    l1 = ROOT.TLine(70.0, p1.GetUymin(), 70.0, p1.GetUymax())
-    l1.Draw()
+    c1.cd(3)
+    histos["DYJetsToLL_pt"].Draw("hist")
+    histos["DYJetsToLL_pt1"].Draw("samehist")
+    p14 = c1.cd(4)
+    p14.SetLogy()
+    histos["DYJetsToLL_pt"].Draw("hist")
+    histos["DYJetsToLL_pt1"].Draw("samehist")
 
-    p2 = c1.cd(2)
-    p2.SetLogy()
-    histos1["DYJetsToLL_M50_HTall_pt"].Draw()
-    c1.Update()
-    l2 = ROOT.TLine(70.0, 10**p2.GetUymin(), 70.0, 10**p2.GetUymax())
-    l2.Draw()
+    t = draw_header(c1, sample, period)
+    c1.SaveAs(str(output.with_name(f"{output.stem}_ptmass.png")))
 
-    c1.SaveAs("dygen02.png")
+    c2 = ROOT.TCanvas("c2", "", 800, 400)
+    c2.Divide(2, 1, 0.01, 0.01)
+    if ht_bins:
+        hs = ROOT.THStack("hs", ";HT [GeV/c^{2}];Weighted entries")
+        l = ROOT.TLegend(0.6, 0.63, 0.9, 0.88)
+        l.SetBorderSize(0)
+        for i, ht in enumerate(HT_BINS):
+            h = histos[f"DYJetsToLL_M50_HT{ht}_HT"]
+            h.SetFillColor(i + 2)
+            hs.Add(h)
+            l.AddEntry(h, ht, "f")
 
-    c1 = ROOT.TCanvas("c", "", 800, 400)
-    histos['DYJetsToLL_M10to50_LO_pt'].Draw()
+        p1 = c2.cd(1)
+        p1.SetLeftMargin(0.2)
+        hs.Draw("hist")
+        l.Draw()
+        p2 = c2.cd(2)
+        p2.SetLeftMargin(0.2)
+        p2.SetLogy()
+        hs.Draw("hist")
+        l.Draw()
+    else:
+        if "DYJetsToLL_M50_LO_ext_HT" in histos:
+            h1 = histos["DYJetsToLL_M50_LO_HT"] + histos["DYJetsToLL_M50_LO_ext_HT"]
+        else:
+            h1 = histos["DYJetsToLL_M50_LO_HT"]
+        h1.SetFillColor(ROOT.kBlue)
+        c2.cd(1)
+        h1.Draw("hist")
+        p2 = c2.cd(2)
+        p2.SetLogy()
+        h1.Draw("hist")
 
-    c1.SaveAs("dygen03.png")
+    t = draw_header(c2, sample, period)
+
+    c2.SaveAs(str(output.with_name(f"{output.stem}_ht.png")))
+
 
 if __name__ == "__main__":
     main()

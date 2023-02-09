@@ -24,49 +24,79 @@ inline std::string int_to_hex(T val, size_t width=sizeof(T)*2)
 
 float GenDY_pt(
     const ROOT::RVecF & pt,
+    const ROOT::RVecF & eta,
     const ROOT::RVecF & phi,
+    const ROOT::RVecF & mass,
     const ROOT::RVecI & pdgId, 
     const ROOT::RVecI & status, 
     const ROOT::RVecI & statusFlags)
 {
     std::set<int> leptons { 11, 13, 15 };
 
-    int event_type = 0;
-    int z =  -1;
     int l1 = -1;
     int l2 = -1;
     for (size_t i = 0; i<pt.size(); i++ )
     {
-        if (statusFlags[i] == 0x1181)
-        {
-            if ( event_type == 0)
+        if ((statusFlags[i] & 0x1181) == 0x1181 ) {
+            if (l1 == -1 && leptons.find(abs(pdgId[i])) != leptons.end())
             {
-                event_type = pdgId[i];
-                if (leptons.find(abs(pdgId[i])) != leptons.end()) {
-                    l1 = i;
-                }
-            } 
-            if ( event_type == 23 && pdgId[i] == 23)
-            {
-                z = i;
-            } if ( event_type == -pdgId[i]) {
+                l1 = i;
+            } else if (pdgId[i] == - pdgId[l1]) {
                 l2 = i;
-            }
-        }
+            }           
+        }         
     }
     float dy_pt = -1.;
-    if ( event_type == 23) 
-    {
-        dy_pt = pt[z];
-        // std::cout << "Z      : " << dy_pt << std::endl; 
-    } else if (leptons.find(abs(event_type)) != leptons.end()) 
-     {
-        dy_pt = -1; 
-        // dy_pt = sqrt(pt[l1] * pt[l1] + pt[l2] * pt[l2] + 2 * pt[l1] * pt[l2] * cos(phi[l1]-phi[l2])); 
-        // std::cout << "gamma* : " << dy_pt << std::endl;
+    if ( l2 > 0) {
+        if (min(pt[l1], pt[l2]) > 15. && max(pt[l1], pt[l2]) > 40 && abs(eta[l1])<1.5 && abs(eta[l2])<1.5) {
+            auto v1 = ROOT::Math::PtEtaPhiMVector(pt[l1], eta[l1], phi[l1], mass[l1]);
+            auto v2 = ROOT::Math::PtEtaPhiMVector(pt[l2], eta[l2], phi[l2], mass[l2]);
+            dy_pt = (v1+v2).Pt();
+        }
     } else {
-        std::cout << "Unknown event type " << event_type << std::endl;
+        std::cout << "Not all leptons found" << std::endl;
     }
     return dy_pt;
 }
+
+float GenDY_mass(
+    const ROOT::RVecF & pt,
+    const ROOT::RVecF & eta,
+    const ROOT::RVecF & phi,
+    const ROOT::RVecF & mass,
+    const ROOT::RVecI & pdgId, 
+    const ROOT::RVecI & status, 
+    const ROOT::RVecI & statusFlags)
+{
+    std::set<int> leptons { 11, 13, 15 };
+
+    // int event_type = 0;
+    // int z =  -1;
+    int l1 = -1;
+    int l2 = -1;
+    for (size_t i = 0; i<pt.size(); i++ )
+    {
+        if ((statusFlags[i] & 0x1181) == 0x1181 ) {
+            if (l1 == -1 && leptons.find(abs(pdgId[i])) != leptons.end())
+            {
+                l1 = i;
+            } else if (pdgId[i] == - pdgId[l1]) {
+                l2 = i;
+            }           
+        } 
+    }
+//    std::cout << "Found" << z << " " << l1 << " " << l2 << std::endl;
+    float m = -1.;
+    if ( l2 > 0 ) {
+        if (min(pt[l1], pt[l2]) > 15. && max(pt[l1], pt[l2]) > 40) {
+            auto v1 = ROOT::Math::PtEtaPhiMVector(pt[l1], eta[l1], phi[l1], mass[l1]);
+            auto v2 = ROOT::Math::PtEtaPhiMVector(pt[l2], eta[l2], phi[l2], mass[l2]);
+            m = (v1+v2).M();
+        }        
+    } else {
+        std::cout << "not all leptons found" << std::endl;
+    }
+    return m;
+}
+
 #endif
