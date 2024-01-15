@@ -30,7 +30,7 @@ cfg = config.get()
 BASE_DIR = pathlib.Path(__file__).absolute().parent
 CORRECTIONLIB_DIR = (
     pathlib.Path(os.environ["CONDA_PREFIX"])
-    / "lib/python3.10/site-packages/correctionlib"
+    / "lib/python3.11/site-packages/correctionlib"
 )
 DEFAULT_OUTPUT = pathlib.Path(
     "/scratch-cbe/users", os.environ["USER"], "StopsCompressed/plots"
@@ -199,6 +199,7 @@ class WPTAnalysis(analysis.HistoAnalysis):
             .Define("W_mt", "mt_lep_met(ll_pt, ll_phi, met_pt, met_phi)")
         )
         return {"muon": df_muon, "elec": df_elec}
+
 
 class MyWorkerPlugin(analysis.WorkerPlugin):
     """Worker plugin for initialisation of workers."""

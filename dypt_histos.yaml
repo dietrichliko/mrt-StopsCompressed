@@ -41,18 +41,18 @@
       ymin_log: 10
     - name: muon_ll_pt
       title: "Dimuon p_{T}"
-      bins: [100,0.,1000.]
+      bins: [150,0.,1200.]
       var: ll_pt
       ymin_log: 10
     - name: muon_ll_pt_1
       title: "Dimuon p_{T} (80 < m < 100)"
-      bins: [100,0.,1000.]
+      bins: [150,0.,1200.]
       var: ll_pt
       ymin_log: 10
       when: ll_mass > 80 && ll_mass < 100
     - name: muon_ll_pt_2
       title: "Dimuon p_{T} (80 < m < 100)"
-      varbins: [0., 50., 100., 150., 200., 300., 400., 600., 1200.]
+      varbins: [150., 200., 300., 400., 600., 1200.]
       var: ll_pt
       ymin_log: 10
       when: ll_mass > 80 && ll_mass < 100
@@ -107,18 +107,18 @@
       ymin_log: 10
     - name: elec_ll_pt
       title: "Dielectron p_{T}"
-      bins: [100,0.,1000.]
+      bins: [150,0.,1200.]
       var: ll_pt
       ymin_log: 10
     - name: elec_ll_pt_1
       title: "Dielectron p_{T} (80 < m < 100)"
-      bins: [100,0.,1000.]
+      bins: [150,0.,1200.]
       var: ll_pt
       ymin_log: 10
       when: ll_mass > 80 && ll_mass < 100
     - name: elec_ll_pt_2
       title: "Dielectron p_{T} (80 < m < 100)"
-      varbins: [0., 50., 100., 150., 200., 300., 400., 600., 1200.]
+      varbins: [150., 200., 300., 400., 600., 1200.]
       var: ll_pt
       ymin_log: 10
       when: ll_mass > 80 && ll_mass < 100

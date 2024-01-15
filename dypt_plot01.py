@@ -52,7 +52,7 @@ DATA_SAMPLES = {
         "muon": "DoubleMuon",
         "elec": "DoubleEG",
     },
-    "Run2017": {
+    "Run2018": {
         "muon": "DoubleMuon",
         "elec": "SingleElectron",
     },
@@ -60,9 +60,9 @@ DATA_SAMPLES = {
 
 
 ISR_CORRECTIONS = [
-    1.0,
-    1.052,
-    1.179,
+    # 1.0,
+    # 1.052,
+    # 1.179,
     1.150,
     1.057,
     1.000,
@@ -139,6 +139,7 @@ def main(
 
     output.mkdir(exist_ok=True)
 
+    int_lumi: dict[str, float] = {}
     with cache.SamplesCache() as sc:
         for sf in sample_file:
             sc.load(sf)
@@ -166,6 +167,7 @@ def main(
                     )
                     samples_bkg = list(sc.list(p, types=model.SampleType.BACKGROUND))
 
+                    int_lumi[p] = float(samples_dat[0].attrs["integrated_luminosity"])
                     hname = f"{df}_ll_pt_2"
 
                     histos_dat = [get_histo(inp_root, hname, s) for s in samples_dat]
@@ -263,11 +265,6 @@ def main(
                             else:
                                 elec_dat.Add(h[0], -1.0)
 
-                both_dat = muon_dat.Clone("both_dat")
-                both_dat.Add(muon_dat, elec_dat)
-                both_bkg = muon_bkg.Clone("both_bkg")
-                both_bkg.Add(muon_bkg, elec_bkg)
-
                 muon_scale = muon_dat.GetBinContent(1) / muon_bkg.GetBinContent(1)
                 muon_ratio = muon_dat.Clone("muon_ratio")
                 muon_ratio.Divide(muon_dat, muon_bkg, 1.0, muon_scale)
@@ -276,52 +273,96 @@ def main(
                 elec_ratio = elec_dat.Clone("elec_ratio")
                 elec_ratio.Divide(elec_dat, elec_bkg, 1.0, elec_scale)
 
-                both_scale = both_dat.GetBinContent(1) / both_bkg.GetBinContent(1)
-                both_ratio = both_dat.Clone("both_ratio")
-                both_ratio.Divide(both_dat, both_bkg, 1.0, both_scale)
-
+                both_ratio = muon_dat.Clone("both_ratio")
+                both_ratio.Add(muon_ratio, elec_ratio, 0.5, 0.5)
                 c1 = ROOT.TCanvas("c1")
 
+                c1.SetRightMargin(0.09)
+                c1.SetLeftMargin(0.14)
+                c1.SetBottomMargin(0.14)
                 old_ratio = muon_ratio.Clone("old_ratio")
                 old_ratio.Reset()
                 for i, x in enumerate(ISR_CORRECTIONS):
+                    x = x / 1.150
                     old_ratio.SetBinContent(i + 1, x)
                     old_ratio.SetBinError(i + 1, abs(x - 1.0))
-
-                old_ratio.SetMinimum(0.5)
-                old_ratio.SetMaximum(1.5)
+                old_ratio.SetMinimum(0.3)
+                old_ratio.SetMaximum(1.2)
                 old_ratio.SetStats(0)
-                old_ratio.SetTitle("ISR Correction for Drell Yan")
-                both_ratio.SetMarkerSize(1)
-                muon_ratio.SetMarkerSize(1)
-                elec_ratio.SetMarkerSize(1)
-                old_ratio.SetMarkerSize(1)
+                old_ratio.SetTitle(
+                    "ISR Correction for Drell Yan; p_{T} [GeV/c]; Data / MC"
+                )
+                old_ratio1 = muon_ratio.Clone("old_ratio")
+                old_ratio1.Reset()
+                for i, x in enumerate(ISR_CORRECTIONS):
+                    x = x / 1.150
+                    old_ratio1.SetBinContent(i + 1, x)
+                    old_ratio1.SetBinError(i + 1, 0.5 * abs(x - 1.0))
+                old_ratio1.SetStats(0)
+                both_ratio.SetMarkerSize(1.5)
+                muon_ratio.SetMarkerSize(1.5)
+                elec_ratio.SetMarkerSize(1.5)
+                old_ratio.SetMarkerSize(1.5)
+                old_ratio1.SetMarkerSize(1.5)
                 both_ratio.SetMarkerStyle(20)
                 muon_ratio.SetMarkerStyle(21)
                 elec_ratio.SetMarkerStyle(22)
-                old_ratio.SetMarkerStyle(22)
+                old_ratio.SetMarkerStyle(23)
+                old_ratio1.SetMarkerStyle(23)
                 both_ratio.SetMarkerColor(ROOT.kRed)
+                both_ratio.SetLineColor(ROOT.kRed)
                 muon_ratio.SetMarkerColor(ROOT.kGreen)
+                muon_ratio.SetLineColor(ROOT.kGreen)
                 elec_ratio.SetMarkerColor(ROOT.kBlue)
-                old_ratio.SetMarkerColor(ROOT.kYellow)
+                elec_ratio.SetLineColor(ROOT.kBlue)
+                old_ratio.SetMarkerColor(6)
+                old_ratio1.SetMarkerColor(6)
+                old_ratio.SetLineColor(6)
                 old_ratio.SetFillColor(ROOT.kGray)
-                old_ratio.SetFillStyle(3018)
+                old_ratio.SetFillStyle(3644)
+                old_ratio1.SetFillColor(ROOT.kGray)
+                old_ratio1.SetLineColor(6)
+                old_ratio1.SetFillStyle(3344)
                 old_ratio.Draw("e3")
-                old_ratio.Draw("p same")
-                both_ratio.Draw("c hist same")
-                both_ratio.Draw("p same")
-                muon_ratio.Draw("c hist same")
+                old_ratio.GetXaxis().SetTitleOffset(1)
+                old_ratio.GetYaxis().SetTitleOffset(2)
+                old_ratio.Draw("e3")
+                old_ratio1.Draw("e3 same")
+                # old_ratio1.SetFillStyle(0)
+                # old_ratio1.Draw("lp hist same")
+                # old_ratio1.SetFillStyle(3344)
+                muon_ratio.Draw("l hist same")
                 muon_ratio.Draw("p same")
-                elec_ratio.Draw("c hist same")
+                elec_ratio.Draw("l hist same")
                 elec_ratio.Draw("p same")
+                both_ratio.Draw("l hist same")
+                both_ratio.Draw("p same")
 
                 l = ROOT.TLegend(0.75, 0.7, 0.9, 0.89)
                 l.SetBorderSize(0)
-                l.AddEntry(old_ratio, "Offical", "p")
+                l.AddEntry(old_ratio, "Official", "p")
+                l.AddEntry(old_ratio, "100% Error", "f")
+                l.AddEntry(old_ratio1, "50% Error", "f")
                 l.AddEntry(muon_ratio, "#mu", "p")
                 l.AddEntry(elec_ratio, "e", "p")
-                l.AddEntry(both_ratio, "both", "p")
+                l.AddEntry(both_ratio, "avg.", "p")
                 l.Draw()
+
+                c1.cd()
+                t1 = ROOT.TText(0.01, 0.97, "CMS Preliminary")
+                t1.SetNDC()
+                t1.SetTextFont(40)
+                t1.SetTextSize(0.03)
+                t1.Draw()
+
+                t2 = ROOT.TLatex()
+                t2.SetNDC()
+                # t2.SetTextFont(41)
+                t2.SetTextSize(0.03)
+                t2.SetTextAlign(30)
+                t2.DrawLatex(0.9, 0.97, f"{p} ({int_lumi[p]} fb^{{-1}})")
+                # t2.Draw()
+
                 c1.SaveAs(str(output_path / "plot01.png"))
 
                 out_root.Close()
